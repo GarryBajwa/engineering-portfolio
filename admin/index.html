@@ -58,10 +58,11 @@
 
       <label for="token">Fine-grained GitHub token</label>
       <input id="token" type="password" autocomplete="off" spellcheck="false" placeholder="Paste token only when saving">
-      <p class="muted small">Use a fine-grained token limited to <strong>bajwa95/engineering-portfolio</strong> with <strong>Contents: Read and write</strong>. This page does not save the token.</p>
+      <p class="muted small">Use a fine-grained token limited to <strong>bajwa95/engineering-portfolio</strong> with <strong>Contents: Read and write</strong>. After a successful save, the token is kept only in this browser session so you do not need to paste it again each time.</p>
 
       <div class="actions">
         <button id="save" type="button">Save active destination</button>
+        <button id="forgetToken" type="button">Forget saved token</button>
         <a class="button" href="../go/" target="_blank" rel="noopener">Test NFC URL</a>
       </div>
       <div class="status" id="status" aria-live="polite">Ready.</div>
@@ -80,9 +81,17 @@
     const api=`https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
     const customWrap=document.getElementById("customWrap");
     const tiles=[...document.querySelectorAll(".tile")];
-    const status=document.getElementById("status"), save=document.getElementById("save");
+    const status=document.getElementById("status"), save=document.getElementById("save"), forgetToken=document.getElementById("forgetToken"), tokenInput=document.getElementById("token");
     let currentSha="";
     let selectedValue="https://bajwa95.github.io/engineering-portfolio/";
+    const SESSION_TOKEN_KEY="engineeringPortfolioGithubToken";
+    try{
+      const savedToken=sessionStorage.getItem(SESSION_TOKEN_KEY);
+      if(savedToken){
+        tokenInput.value=savedToken;
+        status.textContent="GitHub token loaded for this browser session.";
+      }
+    }catch(e){}
 
     const labels={
       "https://bajwa95.github.io/engineering-portfolio/":"Portfolio Home",
@@ -128,8 +137,14 @@
       }catch(e){status.textContent=e.message;}
     }
 
+    forgetToken.addEventListener("click",()=>{
+      try{sessionStorage.removeItem(SESSION_TOKEN_KEY);}catch(e){}
+      tokenInput.value="";
+      status.textContent="Saved session token cleared.";
+    });
+
     save.addEventListener("click",async()=>{
-      const token=document.getElementById("token").value.trim();
+      const token=tokenInput.value.trim();
       let target=selectedValue, label=labels[target]||"Selected page";
       if(target==="custom"){
         target=document.getElementById("customUrl").value.trim();
@@ -146,10 +161,10 @@
         const r=await fetch(api,{method:"PUT",headers:{"Accept":"application/vnd.github+json","Authorization":"Bearer "+token,"Content-Type":"application/json"},body:JSON.stringify({message:"Update NFC redirect destination",content:encodeBase64Utf8(payload),sha:currentSha,branch})});
         if(!r.ok){const err=await r.json().catch(()=>({}));throw new Error(err.message||("GitHub returned "+r.status));}
         const data=await r.json(); currentSha=data.content.sha;
+        try{sessionStorage.setItem(SESSION_TOKEN_KEY,token);}catch(e){}
         document.getElementById("currentLabel").textContent=label;
         document.getElementById("currentUrl").textContent=target;
-        document.getElementById("token").value="";
-        status.textContent="Saved. The NFC URL now points to: "+label;
+        status.textContent="Saved. The NFC URL now points to: "+label+" · Token kept for this browser session.";
       }catch(e){status.textContent="Save failed: "+e.message;}
       finally{save.disabled=false;}
     });
