@@ -8,18 +8,28 @@
   <style>
     :root{--bg:#0b1118;--panel:#111a24;--line:#2a3a4b;--text:#eef4f9;--muted:#aab7c5;--accent:#7cc4ff}
     *{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#091018,var(--bg));color:var(--text);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
-    .wrap{width:min(760px,calc(100% - 30px));margin:44px auto}.lock-wrap{width:min(480px,calc(100% - 30px));margin:70px auto}
+    .wrap{width:min(760px,calc(100% - 30px));margin:34px auto 80px}.lock-wrap{width:min(480px,calc(100% - 30px));margin:60px auto}
     .card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px;margin-bottom:18px}.lock-card{text-align:center}
-    h1{font-size:clamp(2rem,5vw,3.2rem);margin:0 0 8px}.lock-card h1{font-size:clamp(2rem,7vw,3rem)}h2{font-size:1.15rem;margin:0 0 14px}.muted{color:var(--muted)}
-    label{display:block;font-weight:700;margin:16px 0 7px;text-align:left}input{width:100%;min-height:48px;border:1px solid #3a4d60;border-radius:10px;background:#0d141c;color:var(--text);padding:11px 12px;font:inherit}
-    button,a.button{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:10px 15px;border-radius:10px;border:1px solid #47627b;background:#17304a;color:#f3f8fc;font-weight:800;text-decoration:none;cursor:pointer}
-    button:disabled{opacity:.55;cursor:not-allowed}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.status{margin-top:16px;padding:12px;border-radius:10px;background:#0d151e;border:1px solid var(--line);color:var(--muted)}
-    code{color:#b9dcf8}.current{font-size:1.08rem}.warning{border-left:3px solid #d6aa65;padding-left:12px}.small{font-size:.9rem}
+    .topbar{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:18px}.topbar-copy{min-width:0}.back-link{display:inline-block;margin-bottom:8px;color:var(--accent);font-size:.92rem}
+    h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.08;margin:0 0 8px}.lock-card h1{font-size:clamp(2rem,7vw,3rem)}h2{font-size:1.1rem;margin:0 0 14px}.muted{color:var(--muted)}
+    label{display:block;font-weight:700;margin:16px 0 7px;text-align:left}input{width:100%;min-height:52px;border:1px solid #3a4d60;border-radius:12px;background:#0d141c;color:var(--text);padding:12px 14px;font:inherit;font-size:16px}
+    button,a.button{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:11px 15px;border-radius:12px;border:1px solid #47627b;background:#17304a;color:#f3f8fc;font-weight:800;text-decoration:none;cursor:pointer}
+    button:disabled{opacity:.55;cursor:not-allowed}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.save-button{background:#1d527a;border-color:#6ab8ef}.status{margin-top:14px;padding:12px;border-radius:10px;background:#0d151e;border:1px solid var(--line);color:var(--muted);overflow-wrap:anywhere}
+    code{color:#b9dcf8}.current{font-size:1.08rem}.current-url{margin-top:4px;font-size:.86rem;overflow-wrap:anywhere}.warning{border-left:3px solid #d6aa65;padding-left:12px}.small{font-size:.9rem}
     .tile-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:10px}
-    .tile{min-height:76px;padding:12px;border-radius:14px;border:1px solid #3a4d60;background:#0d141c;color:#eef4f9;font:inherit;font-weight:800;text-align:center;cursor:pointer;transition:.18s ease}
+    .tile{min-height:86px;padding:12px 10px;border-radius:15px;border:1px solid #3a4d60;background:#0d141c;color:#eef4f9;font:inherit;font-weight:800;text-align:center;cursor:pointer;transition:.18s ease;touch-action:manipulation}
     .tile:hover{border-color:var(--accent);background:#13202d}.tile.active{border-color:var(--accent);background:#17304a;box-shadow:0 0 0 2px rgba(124,196,255,.15)}
-    .tile-icon{display:block;font-size:1.25rem;margin-bottom:4px}[hidden]{display:none!important}
-    @media(max-width:480px){.wrap{margin:24px auto}.lock-wrap{margin:38px auto}.card{padding:18px}.tile{min-height:70px;padding:10px 8px;font-size:.92rem}}
+    .tile-icon{display:block;font-size:1.45rem;line-height:1;margin-bottom:8px}.active-note{display:inline-flex;align-items:center;gap:7px;margin-top:10px;padding:6px 10px;border-radius:999px;background:#0d151e;border:1px solid var(--line);font-size:.8rem;color:var(--muted)}
+    .active-dot{width:8px;height:8px;border-radius:50%;background:#78d6a3}.mobile-actions{position:sticky;bottom:0;z-index:10;margin:18px -8px 0;padding:10px 8px 12px;background:linear-gradient(180deg,rgba(11,17,24,0),rgba(11,17,24,.96) 30%)}.mobile-actions .actions{margin:0}.mobile-actions button,.mobile-actions a{flex:1 1 145px}
+    [hidden]{display:none!important}
+    @media(max-width:560px){
+      body{font-size:15px}.wrap{width:calc(100% - 20px);margin:16px auto 64px}.lock-wrap{width:calc(100% - 20px);margin:24px auto}.card{padding:16px;border-radius:16px;margin-bottom:12px}
+      .topbar{margin-bottom:12px}.topbar h1{font-size:1.65rem}.topbar .muted{margin:5px 0 0;font-size:.9rem}.back-link{margin-bottom:5px}
+      .tile-grid{gap:9px}.tile{min-height:82px;padding:10px 7px;border-radius:13px;font-size:.9rem}.tile-icon{font-size:1.35rem;margin-bottom:6px}
+      .current{font-size:1rem}.current-url{font-size:.78rem}.status{font-size:.85rem}
+      .mobile-actions{margin-left:-4px;margin-right:-4px}.mobile-actions .actions{display:grid;grid-template-columns:1fr 1fr}.mobile-actions .save-button{grid-column:1/-1;min-height:54px;font-size:1rem}
+      .lock-card{padding:22px 18px}.lock-card .actions button{width:100%;min-height:54px}
+    }
   </style>
 </head>
 <body>
@@ -39,14 +49,19 @@
   </main>
 
   <main id="adminScreen" class="wrap" hidden>
-    <p class="muted"><a href="../" style="color:var(--accent)">← Portfolio</a></p>
-    <h1>NFC Redirect Manager</h1>
-    <p class="muted">Your NFC tag always opens <strong>/go/</strong>. Change the active destination here without rewriting the tag.</p>
+    <div class="topbar">
+      <div class="topbar-copy">
+        <a class="back-link" href="../">← Portfolio</a>
+        <h1>NFC Redirect Manager</h1>
+        <p class="muted">Tap a destination, then save. Your NFC tag always stays on <strong>/go/</strong>.</p>
+      </div>
+    </div>
 
     <section class="card">
       <h2>Current destination</h2>
       <div class="current"><strong id="currentLabel">Loading…</strong></div>
-      <div class="muted" id="currentUrl"></div>
+      <div class="muted current-url" id="currentUrl"></div>
+      <div class="active-note"><span class="active-dot"></span>Active NFC destination</div>
     </section>
 
     <section class="card">
@@ -70,12 +85,14 @@
         <input id="customLabel" type="text" placeholder="My custom page">
       </div>
 
-      <div class="actions">
-        <button id="save" type="button">Save active destination</button>
-        <button id="lockAdmin" type="button">Lock Admin</button>
-        <a class="button" href="../go/" target="_blank" rel="noopener">Test NFC URL</a>
-      </div>
       <div class="status" id="status" aria-live="polite">Ready.</div>
+      <div class="mobile-actions">
+        <div class="actions">
+          <button id="save" class="save-button" type="button">Save Destination</button>
+          <a class="button" href="../go/" target="_blank" rel="noopener">Test NFC</a>
+          <button id="lockAdmin" type="button">Lock</button>
+        </div>
+      </div>
     </section>
 
     <section class="card warning">
