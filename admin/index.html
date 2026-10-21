@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <title>NFC Redirect Manager | Garry Engineering Portfolio</title>
+  <style>
+    :root{--bg:#0b1118;--panel:#111a24;--line:#2a3a4b;--text:#eef4f9;--muted:#aab7c5;--accent:#7cc4ff}
+    *{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#091018,var(--bg));color:var(--text);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+    .wrap{width:min(760px,calc(100% - 30px));margin:44px auto}.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px;margin-bottom:18px}
+    h1{font-size:clamp(2rem,5vw,3.2rem);margin:0 0 8px}h2{font-size:1.15rem;margin:0 0 14px}.muted{color:var(--muted)}
+    label{display:block;font-weight:700;margin:16px 0 7px}select,input{width:100%;min-height:48px;border:1px solid #3a4d60;border-radius:10px;background:#0d141c;color:var(--text);padding:11px 12px;font:inherit}
+    button,a.button{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:10px 15px;border-radius:10px;border:1px solid #47627b;background:#17304a;color:#f3f8fc;font-weight:800;text-decoration:none;cursor:pointer}
+    button:disabled{opacity:.55;cursor:not-allowed}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.status{margin-top:16px;padding:12px;border-radius:10px;background:#0d151e;border:1px solid var(--line);color:var(--muted)}
+    code{color:#b9dcf8}.current{font-size:1.08rem}.warning{border-left:3px solid #d6aa65;padding-left:12px}.small{font-size:.9rem}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <p class="muted"><a href="../" style="color:var(--accent)">← Portfolio</a></p>
+    <h1>NFC Redirect Manager</h1>
+    <p class="muted">Your NFC tag always opens <strong>/go/</strong>. Change the active destination here without rewriting the tag.</p>
+
+    <section class="card">
+      <h2>Current destination</h2>
+      <div class="current"><strong id="currentLabel">Loading…</strong></div>
+      <div class="muted" id="currentUrl"></div>
+    </section>
+
+    <section class="card">
+      <h2>Choose where the NFC tag should open</h2>
+      <label for="preset">Destination</label>
+      <select id="preset">
+        <option value="https://bajwa95.github.io/engineering-portfolio/">Portfolio Home</option>
+        <option value="https://bajwa95.github.io/engineering-portfolio/projects/komo-cnc/">KOMO CNC Case Study</option>
+        <option value="https://bajwa95.github.io/engineering-portfolio/projects/central-display/">Central Display Platform</option>
+        <option value="https://bajwa95.github.io/engineering-portfolio/projects/roadmoji/">Roadmoji</option>
+        <option value="https://bajwa95.github.io/engineering-portfolio/projects/d455-3d-scanner/">D455 3D Scanner</option>
+        <option value="https://www.linkedin.com/in/gurwinderjit-singh/">LinkedIn Profile</option>
+        <option value="https://github.com/bajwa95">GitHub Profile</option>
+        <option value="custom">Custom URL…</option>
+      </select>
+
+      <div id="customWrap" hidden>
+        <label for="customUrl">Custom URL</label>
+        <input id="customUrl" type="url" inputmode="url" placeholder="https://example.com/page">
+        <label for="customLabel">Display label</label>
+        <input id="customLabel" type="text" placeholder="My custom page">
+      </div>
+
+      <label for="token">Fine-grained GitHub token</label>
+      <input id="token" type="password" autocomplete="off" spellcheck="false" placeholder="Paste token only when saving">
+      <p class="muted small">Use a fine-grained token limited to <strong>bajwa95/engineering-portfolio</strong> with <strong>Contents: Read and write</strong>. This page does not save the token.</p>
+
+      <div class="actions">
+        <button id="save" type="button">Save active destination</button>
+        <a class="button" href="../go/" target="_blank" rel="noopener">Test NFC URL</a>
+      </div>
+      <div class="status" id="status" aria-live="polite">Ready.</div>
+    </section>
+
+    <section class="card warning">
+      <h2>One-time NFC setup</h2>
+      <p class="muted">Write this permanent URL to the NFC tag:</p>
+      <p><code>https://bajwa95.github.io/engineering-portfolio/go/</code></p>
+      <p class="muted small">After that, leave the tag unchanged. Use this manager whenever you want the tag to open a different page.</p>
+    </section>
+  </main>
+
+  <script>
+    const owner="bajwa95", repo="engineering-portfolio", path="go/config.json", branch="main";
+    const api=`https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
+    const preset=document.getElementById("preset"), customWrap=document.getElementById("customWrap");
+    const status=document.getElementById("status"), save=document.getElementById("save");
+    let currentSha="";
+
+    const labels={
+      "https://bajwa95.github.io/engineering-portfolio/":"Portfolio Home",
+      "https://bajwa95.github.io/engineering-portfolio/projects/komo-cnc/":"KOMO CNC Case Study",
+      "https://bajwa95.github.io/engineering-portfolio/projects/central-display/":"Central Display Platform",
+      "https://bajwa95.github.io/engineering-portfolio/projects/roadmoji/":"Roadmoji",
+      "https://bajwa95.github.io/engineering-portfolio/projects/d455-3d-scanner/":"D455 3D Scanner",
+      "https://www.linkedin.com/in/gurwinderjit-singh/":"LinkedIn Profile",
+      "https://github.com/bajwa95":"GitHub Profile"
+    };
+    const decodeBase64Utf8=value=>new TextDecoder().decode(Uint8Array.from(atob(value.replace(/\n/g,"")),c=>c.charCodeAt(0)));
+    const encodeBase64Utf8=value=>{
+      const bytes=new TextEncoder().encode(value); let s="";
+      bytes.forEach(b=>s+=String.fromCharCode(b)); return btoa(s);
+    };
+    async function loadCurrent(){
+      try{
+        const r=await fetch(api+"?ref="+branch+"&t="+Date.now(),{headers:{"Accept":"application/vnd.github+json"}});
+        if(!r.ok) throw new Error("Could not read redirect config");
+        const f=await r.json(); currentSha=f.sha;
+        const cfg=JSON.parse(decodeBase64Utf8(f.content));
+        document.getElementById("currentLabel").textContent=cfg.label||"Selected page";
+        document.getElementById("currentUrl").textContent=cfg.target||"";
+        if(labels[cfg.target]) preset.value=cfg.target; else {preset.value="custom"; customWrap.hidden=false; document.getElementById("customUrl").value=cfg.target||""; document.getElementById("customLabel").value=cfg.label||"";}
+      }catch(e){status.textContent=e.message;}
+    }
+    preset.addEventListener("change",()=>{customWrap.hidden=preset.value!=="custom";});
+    save.addEventListener("click",async()=>{
+      const token=document.getElementById("token").value.trim();
+      let target=preset.value, label=labels[target]||"Selected page";
+      if(target==="custom"){target=document.getElementById("customUrl").value.trim(); label=document.getElementById("customLabel").value.trim()||"Custom page";}
+      if(!/^https?:\/\//i.test(target)){status.textContent="Enter a valid http:// or https:// URL.";return;}
+      if(!token){status.textContent="Paste your fine-grained GitHub token before saving.";return;}
+      save.disabled=true; status.textContent="Saving…";
+      try{
+        const check=await fetch(api+"?ref="+branch+"&t="+Date.now(),{headers:{"Accept":"application/vnd.github+json"}});
+        if(!check.ok) throw new Error("Could not refresh the current config");
+        const latest=await check.json(); currentSha=latest.sha;
+        const payload=JSON.stringify({label,target,updated_at:new Date().toISOString()},null,2)+"\n";
+        const r=await fetch(api,{method:"PUT",headers:{"Accept":"application/vnd.github+json","Authorization":"Bearer "+token,"Content-Type":"application/json"},body:JSON.stringify({message:"Update NFC redirect destination",content:encodeBase64Utf8(payload),sha:currentSha,branch})});
+        if(!r.ok){const err=await r.json().catch(()=>({}));throw new Error(err.message||("GitHub returned "+r.status));}
+        const data=await r.json(); currentSha=data.content.sha;
+        document.getElementById("currentLabel").textContent=label;
+        document.getElementById("currentUrl").textContent=target;
+        document.getElementById("token").value="";
+        status.textContent="Saved. The NFC URL now points to: "+label;
+      }catch(e){status.textContent="Save failed: "+e.message;}
+      finally{save.disabled=false;}
+    });
+    loadCurrent();
+  </script>
+</body>
+</html>
