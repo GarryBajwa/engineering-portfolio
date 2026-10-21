@@ -10,10 +10,16 @@
     *{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#091018,var(--bg));color:var(--text);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
     .wrap{width:min(760px,calc(100% - 30px));margin:44px auto}.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:24px;margin-bottom:18px}
     h1{font-size:clamp(2rem,5vw,3.2rem);margin:0 0 8px}h2{font-size:1.15rem;margin:0 0 14px}.muted{color:var(--muted)}
-    label{display:block;font-weight:700;margin:16px 0 7px}select,input{width:100%;min-height:48px;border:1px solid #3a4d60;border-radius:10px;background:#0d141c;color:var(--text);padding:11px 12px;font:inherit}
+    label{display:block;font-weight:700;margin:16px 0 7px}input{width:100%;min-height:48px;border:1px solid #3a4d60;border-radius:10px;background:#0d141c;color:var(--text);padding:11px 12px;font:inherit}
     button,a.button{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:10px 15px;border-radius:10px;border:1px solid #47627b;background:#17304a;color:#f3f8fc;font-weight:800;text-decoration:none;cursor:pointer}
     button:disabled{opacity:.55;cursor:not-allowed}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.status{margin-top:16px;padding:12px;border-radius:10px;background:#0d151e;border:1px solid var(--line);color:var(--muted)}
     code{color:#b9dcf8}.current{font-size:1.08rem}.warning{border-left:3px solid #d6aa65;padding-left:12px}.small{font-size:.9rem}
+    .tile-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:10px}
+    .tile{min-height:76px;padding:12px;border-radius:14px;border:1px solid #3a4d60;background:#0d141c;color:#eef4f9;font:inherit;font-weight:800;text-align:center;cursor:pointer;transition:.18s ease}
+    .tile:hover{border-color:var(--accent);background:#13202d}
+    .tile.active{border-color:var(--accent);background:#17304a;box-shadow:0 0 0 2px rgba(124,196,255,.15)}
+    .tile-icon{display:block;font-size:1.25rem;margin-bottom:4px}
+    @media(max-width:480px){.wrap{margin:24px auto}.card{padding:18px}.tile-grid{grid-template-columns:1fr 1fr}.tile{min-height:70px;padding:10px 8px;font-size:.92rem}}
   </style>
 </head>
 <body>
@@ -30,17 +36,18 @@
 
     <section class="card">
       <h2>Choose where the NFC tag should open</h2>
-      <label for="preset">Destination</label>
-      <select id="preset">
-        <option value="https://bajwa95.github.io/engineering-portfolio/">Portfolio Home</option>
-        <option value="https://bajwa95.github.io/engineering-portfolio/projects/komo-cnc/">KOMO CNC Case Study</option>
-        <option value="https://bajwa95.github.io/engineering-portfolio/projects/central-display/">Central Display Platform</option>
-        <option value="https://bajwa95.github.io/engineering-portfolio/projects/roadmoji/">Roadmoji</option>
-        <option value="https://bajwa95.github.io/engineering-portfolio/projects/d455-3d-scanner/">D455 3D Scanner</option>
-        <option value="https://www.linkedin.com/in/gurwinderjit-singh/">LinkedIn Profile</option>
-        <option value="https://github.com/bajwa95">GitHub Profile</option>
-        <option value="custom">Custom URL…</option>
-      </select>
+
+      <div class="tile-grid" id="presetGrid" aria-label="Destination choices">
+        <button type="button" class="tile active" data-value="https://bajwa95.github.io/engineering-portfolio/"><span class="tile-icon">⌂</span>Portfolio Home</button>
+        <button type="button" class="tile" data-value="https://bajwa95.github.io/engineering-portfolio/projects/komo-cnc/"><span class="tile-icon">⚙</span>KOMO CNC</button>
+        <button type="button" class="tile" data-value="https://bajwa95.github.io/engineering-portfolio/projects/central-display/"><span class="tile-icon">▣</span>Central Display</button>
+        <button type="button" class="tile" data-value="https://bajwa95.github.io/engineering-portfolio/projects/roadmoji/"><span class="tile-icon">◉</span>Roadmoji</button>
+        <button type="button" class="tile" data-value="https://bajwa95.github.io/engineering-portfolio/projects/d455-3d-scanner/"><span class="tile-icon">◈</span>D455 Scanner</button>
+        <button type="button" class="tile" data-value="https://www.linkedin.com/in/gurwinderjit-singh/"><span class="tile-icon">in</span>LinkedIn</button>
+        <button type="button" class="tile" data-value="https://github.com/bajwa95"><span class="tile-icon">⌘</span>GitHub</button>
+        <button type="button" class="tile" data-value="https://wa.me/1607109790?text=Hi%20Garry"><span class="tile-icon">✆</span>WhatsApp</button>
+        <button type="button" class="tile" data-value="custom"><span class="tile-icon">＋</span>Custom URL</button>
+      </div>
 
       <div id="customWrap" hidden>
         <label for="customUrl">Custom URL</label>
@@ -71,9 +78,11 @@
   <script>
     const owner="bajwa95", repo="engineering-portfolio", path="go/config.json", branch="main";
     const api=`https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
-    const preset=document.getElementById("preset"), customWrap=document.getElementById("customWrap");
+    const customWrap=document.getElementById("customWrap");
+    const tiles=[...document.querySelectorAll(".tile")];
     const status=document.getElementById("status"), save=document.getElementById("save");
     let currentSha="";
+    let selectedValue="https://bajwa95.github.io/engineering-portfolio/";
 
     const labels={
       "https://bajwa95.github.io/engineering-portfolio/":"Portfolio Home",
@@ -82,13 +91,26 @@
       "https://bajwa95.github.io/engineering-portfolio/projects/roadmoji/":"Roadmoji",
       "https://bajwa95.github.io/engineering-portfolio/projects/d455-3d-scanner/":"D455 3D Scanner",
       "https://www.linkedin.com/in/gurwinderjit-singh/":"LinkedIn Profile",
-      "https://github.com/bajwa95":"GitHub Profile"
+      "https://github.com/bajwa95":"GitHub Profile",
+      "https://wa.me/1607109790?text=Hi%20Garry":"WhatsApp — Hi Garry"
     };
+
+    function setSelectedTile(value){
+      selectedValue=value;
+      tiles.forEach(tile=>tile.classList.toggle("active",tile.dataset.value===value));
+      customWrap.hidden=value!=="custom";
+    }
+
+    tiles.forEach(tile=>{
+      tile.addEventListener("click",()=>setSelectedTile(tile.dataset.value));
+    });
+
     const decodeBase64Utf8=value=>new TextDecoder().decode(Uint8Array.from(atob(value.replace(/\n/g,"")),c=>c.charCodeAt(0)));
     const encodeBase64Utf8=value=>{
       const bytes=new TextEncoder().encode(value); let s="";
       bytes.forEach(b=>s+=String.fromCharCode(b)); return btoa(s);
     };
+
     async function loadCurrent(){
       try{
         const r=await fetch(api+"?ref="+branch+"&t="+Date.now(),{headers:{"Accept":"application/vnd.github+json"}});
@@ -97,14 +119,22 @@
         const cfg=JSON.parse(decodeBase64Utf8(f.content));
         document.getElementById("currentLabel").textContent=cfg.label||"Selected page";
         document.getElementById("currentUrl").textContent=cfg.target||"";
-        if(labels[cfg.target]) preset.value=cfg.target; else {preset.value="custom"; customWrap.hidden=false; document.getElementById("customUrl").value=cfg.target||""; document.getElementById("customLabel").value=cfg.label||"";}
+        if(labels[cfg.target]) setSelectedTile(cfg.target);
+        else{
+          setSelectedTile("custom");
+          document.getElementById("customUrl").value=cfg.target||"";
+          document.getElementById("customLabel").value=cfg.label||"";
+        }
       }catch(e){status.textContent=e.message;}
     }
-    preset.addEventListener("change",()=>{customWrap.hidden=preset.value!=="custom";});
+
     save.addEventListener("click",async()=>{
       const token=document.getElementById("token").value.trim();
-      let target=preset.value, label=labels[target]||"Selected page";
-      if(target==="custom"){target=document.getElementById("customUrl").value.trim(); label=document.getElementById("customLabel").value.trim()||"Custom page";}
+      let target=selectedValue, label=labels[target]||"Selected page";
+      if(target==="custom"){
+        target=document.getElementById("customUrl").value.trim();
+        label=document.getElementById("customLabel").value.trim()||"Custom page";
+      }
       if(!/^https?:\/\//i.test(target)){status.textContent="Enter a valid http:// or https:// URL.";return;}
       if(!token){status.textContent="Paste your fine-grained GitHub token before saving.";return;}
       save.disabled=true; status.textContent="Saving…";
@@ -123,6 +153,7 @@
       }catch(e){status.textContent="Save failed: "+e.message;}
       finally{save.disabled=false;}
     });
+
     loadCurrent();
   </script>
 </body>
