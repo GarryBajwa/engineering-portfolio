@@ -1,5 +1,22 @@
 window.PORTFOLIO_PROJECTS = [
   {
+    order: 0,
+    title: "Manufacturing Execution & Production Traceability Platform",
+    mediaTitle: "Production Traceability Platform",
+    mediaSubtitle: "Plant-wide software · barcode scanning · real-time production visibility",
+    kicker: "Digital Manufacturing · Production Systems · Software Integration",
+    description: "Designed, developed and deployed a plant-wide manufacturing information platform connecting barcode scanning, employee work records, live production status, labour analysis and related CNC workflows.",
+    tags: ["Python", "Flask", "Socket.IO", "Barcode Scanning", "Production Analytics"],
+    href: "projects/tag-scanning.html",
+    image: "assets/tag-scanning/production-dashboard-illustration.png",
+    imageAlt: "Illustrative production-tracking dashboard with fictional schedule progress and production metrics",
+    capabilities: {
+      manufacturing: "Built and deployed a plant-wide production traceability and labour analysis system supporting schedule visibility, product work history and manufacturing decisions.",
+      software: "Developed a Python/Flask/Socket.IO server, scanning interfaces, workbook-based reporting and APIs connecting custom manufacturing PC applications."
+    },
+    featured: true
+  },
+  {
     order: 1,
     title: "Forklift-Mounted Workstation Power Integration",
     mediaTitle: "Forklift Workstation Power",
