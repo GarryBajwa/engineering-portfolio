@@ -1,0 +1,36 @@
+name: Publish Resume PDF
+on:
+  push:
+    paths:
+      - 'resume/Garry_Bajwa_Resume.tex'
+      - '.github/workflows/publish-resume.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out site
+        uses: actions/checkout@v4
+      - name: Install LaTeX
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends texlive-latex-recommended texlive-latex-extra lmodern
+      - name: Build two-page resume
+        run: |
+          cd resume
+          pdflatex -interaction=nonstopmode -halt-on-error Garry_Bajwa_Resume.tex
+          pdflatex -interaction=nonstopmode -halt-on-error Garry_Bajwa_Resume.tex
+          mv Garry_Bajwa_Resume.pdf Garry_Bajwa_Generic_Resume.pdf
+      - name: Commit the public PDF
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add resume/Garry_Bajwa_Generic_Resume.pdf
+          if ! git diff --cached --quiet; then
+            git commit -m "Publish generic resume PDF"
+            git push
+          fi
