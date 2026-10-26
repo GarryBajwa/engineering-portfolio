@@ -1514,3 +1514,10 @@ a.capability-project-item:hover{
   .tag-visual-overview{padding-top:28px;padding-bottom:16px}
   .tag-screens-gallery .tag-media-slot{height:auto;aspect-ratio:16/9}
 }
+
+/* Tag-Scanning hero: render the uploaded system schematic in full, never crop */
+.tag-hero-image{margin:32px 0 0;border-radius:20px;overflow:hidden;border:1px solid var(--line-strong);background:#fff;box-shadow:var(--shadow)}
+.tag-hero-image img{display:block;width:100%;height:auto;max-height:none;object-fit:contain;background:#fff}
+.tag-hero-image figcaption{padding:12px 18px;font-size:.88rem;color:var(--muted)}
+.tag-hero-image figcaption strong{display:block;color:var(--text);margin:0 0 2px}
+@media(max-width:700px){.tag-hero-image{margin-top:24px;border-radius:12px}}
