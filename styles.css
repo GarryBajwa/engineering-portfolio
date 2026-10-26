@@ -1500,3 +1500,17 @@ a.capability-project-item:hover{
 .tag-full-diagram-media.has-image .tag-full-diagram-fallback{display:none}
 .tag-full-diagram figcaption{padding:14px 18px;color:var(--muted);font-size:.88rem}
 .tag-full-diagram figcaption strong{color:var(--text);display:block;margin-bottom:2px}
+
+/* Tag-Scanning portfolio: full-resolution diagrams and interface captures */
+.tag-visual-overview{padding-top:54px;padding-bottom:35px}
+.tag-visual-overview .section-intro{max-width:980px}
+.tag-screens-gallery{grid-template-columns:minmax(0,1fr)}
+.tag-screens-gallery .tag-media-slot{height:auto;min-height:0;aspect-ratio:16/9}
+.tag-screens-gallery .tag-media-slot img{width:100%;height:100%;object-fit:contain}
+.tag-full-diagram-media img{width:100%;height:auto;object-fit:contain}
+.tag-screens-gallery .photo-card,.tag-full-diagram.photo-card{min-width:0}
+.tag-screens-gallery .photo-card img{cursor:zoom-in}
+@media(max-width:700px){
+  .tag-visual-overview{padding-top:28px;padding-bottom:16px}
+  .tag-screens-gallery .tag-media-slot{height:auto;aspect-ratio:16/9}
+}
