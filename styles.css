@@ -1521,3 +1521,8 @@ a.capability-project-item:hover{
 .tag-hero-image figcaption{padding:12px 18px;font-size:.88rem;color:var(--muted)}
 .tag-hero-image figcaption strong{display:block;color:var(--text);margin:0 0 2px}
 @media(max-width:700px){.tag-hero-image{margin-top:24px;border-radius:12px}}
+
+/* Featured manufacturing system: preserve more of the workshop and dashboard scene */
+#project-grid > .project-card:first-child .project-media{height:280px}
+#project-grid > .project-card:first-child .project-media img{object-position:center center}
+@media(max-width:700px){#project-grid > .project-card:first-child .project-media{height:230px}}
