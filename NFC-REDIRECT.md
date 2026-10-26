@@ -2,11 +2,11 @@
 
 Permanent NFC URL:
 
-`https://bajwa95.github.io/engineering-portfolio/go/`
+`https://garrybajwa.github.io/engineering-portfolio/go/`
 
 Admin page:
 
-`https://bajwa95.github.io/engineering-portfolio/admin/`
+`https://garrybajwa.github.io/engineering-portfolio/admin/`
 
 ## How it works
 
