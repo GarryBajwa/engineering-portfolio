@@ -1526,3 +1526,33 @@ a.capability-project-item:hover{
 #project-grid > .project-card:first-child .project-media{height:280px}
 #project-grid > .project-card:first-child .project-media img{object-position:center center}
 @media(max-width:700px){#project-grid > .project-card:first-child .project-media{height:230px}}
+
+/* Typography polish: consistent capitalization, ragged-right paragraphs and balanced headings */
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{font-kerning:normal}
+h1,h2,h3,.project-card h3,.credential-card h3,.case-block strong,.detail-card h3{
+  text-transform:none;
+  text-wrap:balance;
+  overflow-wrap:break-word;
+  hyphens:none
+}
+p,li,figcaption,.project-card p,.case-block span,.detail-card p,
+.credential-card p,.case-intro-grid p,.project-brief p,.about-copy p{
+  text-align:left;
+  text-wrap:pretty;
+  hyphens:none;
+  overflow-wrap:break-word
+}
+.hero-copy,.about-copy,.case-title,.case-card,.detail-card{min-width:0}
+.hero-copy .lead,.about-copy p{max-width:68ch}
+.project-card h3{line-height:1.28}
+.project-card p,.detail-card p,.case-block span{line-height:1.62}
+.photo-card figcaption,.tag-hero-image figcaption{line-height:1.48}
+.hero-actions .resume-link{border-color:#a6cae7;background:#e9f4ff;color:#114b7e}
+.hero-actions .resume-link:hover{background:#dbeeff}
+.contact-actions .resume-link{white-space:nowrap}
+@media(max-width:700px){
+  h1,h2,h3{text-wrap:wrap}
+  .hero-actions{gap:9px}
+  .hero-actions .button{padding-inline:14px}
+}
