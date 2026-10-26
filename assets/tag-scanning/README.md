@@ -1,6 +1,6 @@
 # Tag-Scanning Case Study — Portfolio Images
 
-Upload **four sanitized, fictional-data illustrations** directly into this folder in GitHub:
+Upload **five sanitized, fictional-data illustrations** directly into this folder in GitHub:
 
 `assets/tag-scanning/`
 
@@ -12,6 +12,7 @@ The portfolio page at `projects/tag-scanning.html` automatically loads these fil
 | `scanning-station-illustration.png` | Illustrative barcode-scanning workstation, fictional employee/tag information |
 | `excel-records-illustration.png` | Illustrative monthly production and employee-activity workbook structure, fictional data |
 | `manufacturing-ecosystem-illustration.png` | Illustrative connections among central Tag-Scanning platform, scan stations, reporting, CNC software and leftover tools |
+| `tag-scanning-workflow-illustration.png` | System workflow, sheet 02/02, showing employee scan events through Flask, workbooks, reporting and CNC material integration |
 
 ## Before uploading
 
@@ -22,4 +23,4 @@ The portfolio page at `projects/tag-scanning.html` automatically loads these fil
 - The central production system used Excel-backed workbooks; do not depict a SQL database as its deployed backend.
 - Label the Tag PDF Manager and CAD/CAM tools as **related applications** unless a particular direct integration is confirmed.
 
-The built-in HTML architecture and software ecosystem diagrams are already visible even before these images are uploaded.
+Two additional colour-coded, cross-referenced engineering schematics are available as PNG and editable SVG in the delivery package. The built-in HTML architecture and ecosystem diagrams are already visible even before these images are uploaded.
