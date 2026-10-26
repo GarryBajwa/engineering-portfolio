@@ -8,8 +8,8 @@ window.PORTFOLIO_PROJECTS = [
     description: "Designed, developed and deployed a plant-wide manufacturing information platform connecting barcode scanning, employee work records, live production status, labour analysis and related CNC workflows.",
     tags: ["Python", "Flask", "Socket.IO", "Barcode Scanning", "Production Analytics"],
     href: "projects/tag-scanning.html",
-    image: "assets/tag-scanning/production-dashboard-illustration.png",
-    imageAlt: "Production dashboard concept showing sample schedules and department progress",
+    image: "assets/tag-scanning/Barcode%20Tracking%20in%20the%20Workshop.png",
+    imageAlt: "Shop-floor barcode scanning at a wooden frame, connected to a live production-tracking software station",
     capabilities: {
       manufacturing: "Built and deployed a plant-wide production traceability and labour analysis system supporting schedule visibility, product work history and manufacturing decisions.",
       software: "Developed a Python/Flask/Socket.IO server, scanning interfaces, workbook-based reporting and APIs connecting custom manufacturing PC applications."
