@@ -9,7 +9,7 @@ window.PORTFOLIO_PROJECTS = [
     tags: ["Python", "Flask", "Socket.IO", "Barcode Scanning", "Production Analytics"],
     href: "projects/tag-scanning.html",
     image: "assets/tag-scanning/production-dashboard-illustration.png",
-    imageAlt: "Illustrative production-tracking dashboard with fictional schedule progress and production metrics",
+    imageAlt: "Production dashboard concept showing sample schedules and department progress",
     capabilities: {
       manufacturing: "Built and deployed a plant-wide production traceability and labour analysis system supporting schedule visibility, product work history and manufacturing decisions.",
       software: "Developed a Python/Flask/Socket.IO server, scanning interfaces, workbook-based reporting and APIs connecting custom manufacturing PC applications."
