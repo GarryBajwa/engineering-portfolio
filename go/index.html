@@ -23,8 +23,8 @@
     <p id="fallback" hidden><a id="link" href="../">Open portfolio home</a></p>
   </main>
   <script>
-    const API="https://api.github.com/repos/bajwa95/engineering-portfolio/contents/go/config.json?ref=main";
-    const fallback="https://bajwa95.github.io/engineering-portfolio/";
+    const API="https://api.github.com/repos/garrybajwa/engineering-portfolio/contents/go/config.json?ref=main";
+    const fallback="https://garrybajwa.github.io/engineering-portfolio/";
     const decodeBase64Utf8=(value)=>{
       const bytes=Uint8Array.from(atob(value.replace(/\n/g,"")),c=>c.charCodeAt(0));
       return new TextDecoder().decode(bytes);
