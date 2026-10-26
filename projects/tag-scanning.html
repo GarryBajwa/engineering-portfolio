@@ -67,6 +67,19 @@
   <p>I independently developed a MES-style manufacturing application while working in plant operations. It began as a targeted tool for one department and expanded to connect production scanning, employee work records, live status, supervisor decision-making and related shop-floor software. My responsibility extended beyond writing code: I introduced the workflows on the floor, trained employees and supervisors, responded to operational exceptions and improved the system as needs evolved.</p>
 </div></div></div>
 
+<section class="section tag-visual-overview"><div class="container">
+  <p class="eyebrow">Architecture at a glance · Sheet 01</p>
+  <h2>How the manufacturing applications connect</h2>
+  <p class="section-intro">An overview of scan stations, labour records, production visibility, reporting and the engineering tools surrounding the central platform.</p>
+  <figure class="tag-full-diagram photo-card">
+    <div class="tag-full-diagram-media">
+      <img src="../assets/tag-scanning/manufacturing-ecosystem-illustration.png" loading="lazy" alt="Colour-coded diagram showing manufacturing operations, employee activity, live dashboards, costing, exports and related engineering tools around the central Tag-Scanning platform" onload="this.parentElement.classList.add('has-image')" onerror="this.remove()">
+      <div class="tag-full-diagram-fallback">SYSTEM OVERVIEW · SHEET 01 / 02</div>
+    </div>
+    <figcaption><strong>System overview — engineering schematic</strong>Functional relationships between the central server, production teams and supporting applications.</figcaption>
+  </figure>
+</div></section>
+
 <section class="section"><div class="container">
   <p class="eyebrow">Case 01 · The manufacturing challenge</p>
   <h2>Replacing scattered production updates with traceable events</h2>
@@ -102,14 +115,14 @@
     <div class="case-block"><strong>Data processing</strong><span>Department-specific workbook managers, employee-activity modules, Pandas and OpenPyXL supported operational records, analysis and exports.</span></div>
     <div class="case-block"><strong>External application communication</strong><span>Custom PC applications used the Flask server's APIs to communicate with the central production platform; Socket.IO supported real-time status and updates.</span></div>
   </div></article></div>
-  <div class="tag-media-grid">
+  <div class="tag-media-grid tag-screens-gallery">
     <figure class="photo-card">
-      <div class="tag-media-slot"><img src="../assets/tag-scanning/production-dashboard-illustration.png" alt="Illustrative reconstruction of production dashboard showing fictional schedules and completion percentages" loading="lazy" onload="this.parentElement.classList.add('has-image')" onerror="this.remove()"><div class="tag-media-fallback"><span>PRODUCTION DASHBOARD</span><strong>Live schedules &amp; progress</strong><small>Illustrative image slot</small></div></div>
-      <figcaption><strong>Dashboard — illustrative reconstruction</strong>Illustrative presentation of schedule progress, not an original application screenshot. All sample figures must be fictional.</figcaption>
+      <div class="tag-media-slot"><img src="../assets/tag-scanning/production-dashboard-illustration.png" alt="Production dashboard concept screen showing sample schedules, progress bars and completion percentages" loading="lazy" onload="this.parentElement.classList.add('has-image')" onerror="this.remove()"><div class="tag-media-fallback"><span>PRODUCTION DASHBOARD</span><strong>Live schedules &amp; progress</strong><small>Sample view</small></div></div>
+      <figcaption><strong>Production dashboard — concept screen</strong>Schedule completion, department progress and pending work, shown with sample values.</figcaption>
     </figure>
     <figure class="photo-card">
-      <div class="tag-media-slot"><img src="../assets/tag-scanning/scanning-station-illustration.png" alt="Illustrative reconstruction of employee barcode scanning interface with fictional data" loading="lazy" onload="this.parentElement.classList.add('has-image')" onerror="this.remove()"><div class="tag-media-fallback"><span>DEPARTMENT SCANNING</span><strong>Employee ID &amp; barcode input</strong><small>Illustrative image slot</small></div></div>
-      <figcaption><strong>Scanning station — illustrative reconstruction</strong>A conceptual workflow illustration. It does not claim the displayed UI was identical to the deployed interface.</figcaption>
+      <div class="tag-media-slot"><img src="../assets/tag-scanning/Tag%20Scan%20Station%20Dashboard.png" alt="Barcode scanning station concept screen with a paper tag glued to a wooden frame, employee selection, scan input and activity list" loading="lazy" onload="this.parentElement.classList.add('has-image')" onerror="this.remove()"><div class="tag-media-fallback"><span>DEPARTMENT SCANNING</span><strong>Employee ID &amp; barcode input</strong><small>Sample view</small></div></div>
+      <figcaption><strong>Department scanning — concept screen</strong>Example of employee identification, barcode input and a paper production tag attached to a wooden frame. Sample data is shown.</figcaption>
     </figure>
   </div>
 </div></section>
@@ -124,12 +137,12 @@
     <div class="case-block"><strong>Schedule-to-detail navigation</strong><span>Management dashboards summarized schedules and completion percentages, with drill-down to the work and status behind a schedule.</span></div>
     <div class="case-block"><strong>Supervisor exception recovery</strong><span>Operational controls included Hold, Missed, Skipped, Override Passed and Cancel, supporting practical review and resolution of incomplete or unusual scan histories.</span></div>
   </div></article></div>
-  <figure class="tag-full-diagram">
+  <figure class="tag-full-diagram photo-card">
     <div class="tag-full-diagram-media">
       <img src="../assets/tag-scanning/tag-scanning-workflow-illustration.png" loading="lazy" alt="Two-sheet engineering schematic, sheet two showing employee identification, barcode scanning, central Flask processing, Excel-backed workbooks, operational reporting and connected CNC material workflow" onload="this.parentElement.classList.add('has-image')" onerror="this.remove()">
-      <div class="tag-full-diagram-fallback">SYSTEM WORKFLOW · SHEET 02 / 02 — upload tag-scanning-workflow-illustration.png</div>
+      <div class="tag-full-diagram-fallback">SYSTEM WORKFLOW · SHEET 02 / 02</div>
     </div>
-    <figcaption><strong>How the system works — conceptual workflow</strong>Colour-coded illustration of verified scanning, workbook, reporting and CNC integration functions. It is not a screenshot of the deployed software.</figcaption>
+    <figcaption><strong>How the system works — engineering schematic</strong>Scan events, Flask server processing, production records, supervisor review and CNC/material workflows.</figcaption>
   </figure>
   <div class="media-note">The application handled imperfect shop-floor data through operator and supervisor workflows. Specific role-authorization mechanisms are intentionally not claimed without code-level verification.</div>
 </div></section>
@@ -179,16 +192,6 @@
     <div class="case-block"><strong>Leftover-material management</strong><span>A separate application used by design engineering tracked reusable sheet remnants. Suitable leftover material could be associated with future cutting requirements.</span></div>
     <div class="case-block"><strong>Ticketed reuse workflow</strong><span>When a full sheet was required, an available remainder could be set aside with a ticket and recorded in the leftover system for later suggestions. The leftover-data store is distinct from the confirmed Excel-backed production records.</span></div>
   </div></article></div>
-  <div class="tag-media-grid">
-    <figure class="photo-card">
-      <div class="tag-media-slot"><img src="../assets/tag-scanning/manufacturing-ecosystem-illustration.png" alt="Conceptual visualization of the plant software ecosystem centered on Tag Scanning" loading="lazy" onload="this.parentElement.classList.add('has-image')" onerror="this.remove()"><div class="tag-media-fallback"><span>CONNECTED MANUFACTURING</span><strong>System ecosystem visualization</strong><small>Illustrative image slot</small></div></div>
-      <figcaption><strong>Plant software ecosystem — conceptual illustration</strong>Used to communicate system boundaries and workflows, not a literal network or verified screenshot. The diagram above is the authoritative technical explanation.</figcaption>
-    </figure>
-    <figure class="photo-card">
-      <div class="tag-media-slot"><img src="../assets/tag-scanning/excel-records-illustration.png" alt="Illustrative Excel workbooks with fictional monthly production and employee activity records" loading="lazy" onload="this.parentElement.classList.add('has-image')" onerror="this.remove()"><div class="tag-media-fallback"><span>EXCEL-BACKED RECORDS</span><strong>Production and activity data</strong><small>Illustrative image slot</small></div></div>
-      <figcaption><strong>Data records — illustrative reconstruction</strong>Fictional workbook layout representing the real file-based approach without publishing internal files, paths or employee data.</figcaption>
-    </figure>
-  </div>
 </div></section>
 
 <section class="section"><div class="container">
@@ -201,6 +204,13 @@
     <div class="case-block"><strong>Production and payroll exports</strong><span>Data processing supported CSV/text-based production and payroll data export workflows, connecting manufacturing records with existing operational processes.</span></div>
     <div class="case-block"><strong>Reporting horizon</strong><span>Historical data made individual, department and plant-level analysis possible across daily, weekly, monthly and longer periods.</span></div>
   </div></article></div>
+  <figure class="tag-full-diagram photo-card tag-records-view">
+    <div class="tag-full-diagram-media">
+      <img src="../assets/tag-scanning/excel-records-illustration.png" loading="lazy" alt="Sample spreadsheet showing dated department records, production tags, start and end times and employee activity summaries" onload="this.parentElement.classList.add('has-image')" onerror="this.remove()">
+      <div class="tag-full-diagram-fallback">PRODUCTION WORKBOOK · SAMPLE DATA</div>
+    </div>
+    <figcaption><strong>Production records — sample workbook</strong>Demonstrates the department and employee activity structure using example data.</figcaption>
+  </figure>
   <div class="media-note"><strong>Implementation boundary:</strong> This account does not claim transaction-level database locking, zero data loss, an SQL backend or a completed database migration. The exact file-access and concurrency strategy is not publicly documented.</div>
 </div></section>
 
@@ -219,7 +229,7 @@
     <span>HTML / CSS / JavaScript</span><span>QuaggaJS</span><span>Code 128</span><span>Flask APIs</span><span>Real-Time Dashboards</span>
     <span>Production Traceability</span><span>Labour Analysis</span><span>Manufacturing Systems</span><span>Shop-Floor Deployment</span><span>Employee Training</span><span>Cross-Functional Leadership</span>
   </div>
-  <div class="media-note tag-disclosure"><strong>Publication note:</strong> This case study describes an employer-developed internal system at a high level. It does not publish source code, real employee/customer data, workbook templates, credentials, internal network addresses, confidential production figures or proprietary operating procedures. Any interface imagery labeled as a reconstruction uses fictional information and is not represented as a deployed application screenshot.</div>
+  <div class="media-note tag-disclosure"><strong>Publication note:</strong> This case study describes an employer-developed internal system at a high level. It does not publish source code, real employee/customer data, workbook templates, credentials, internal network addresses, confidential production figures or proprietary operating procedures. The concept screens and example diagrams use recreated visuals and sample data.</div>
   <div class="project-nav"><a href="display-platform.html">← Display Platform</a><a href="../index.html#projects">All projects →</a></div>
 </div></section>
 </main>
