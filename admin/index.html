@@ -67,13 +67,13 @@
     <section class="card">
       <h2>Choose where the NFC tag should open</h2>
       <div class="tile-grid" id="presetGrid" aria-label="Destination choices">
-        <button type="button" class="tile active" data-value="https://bajwa95.github.io/engineering-portfolio/"><span class="tile-icon">⌂</span>Portfolio Home</button>
-        <button type="button" class="tile" data-value="https://bajwa95.github.io/engineering-portfolio/projects/komo-cnc/"><span class="tile-icon">⚙</span>KOMO CNC</button>
-        <button type="button" class="tile" data-value="https://bajwa95.github.io/engineering-portfolio/projects/central-display/"><span class="tile-icon">▣</span>Central Display</button>
-        <button type="button" class="tile" data-value="https://bajwa95.github.io/engineering-portfolio/projects/roadmoji/"><span class="tile-icon">◉</span>Roadmoji</button>
-        <button type="button" class="tile" data-value="https://bajwa95.github.io/engineering-portfolio/projects/d455-3d-scanner/"><span class="tile-icon">◈</span>D455 Scanner</button>
+        <button type="button" class="tile active" data-value="https://garrybajwa.github.io/engineering-portfolio/"><span class="tile-icon">⌂</span>Portfolio Home</button>
+        <button type="button" class="tile" data-value="https://garrybajwa.github.io/engineering-portfolio/projects/komo-cnc.html"><span class="tile-icon">⚙</span>KOMO CNC</button>
+        <button type="button" class="tile" data-value="https://garrybajwa.github.io/engineering-portfolio/projects/display-platform.html"><span class="tile-icon">▣</span>Central Display</button>
+        <button type="button" class="tile" data-value="https://garrybajwa.github.io/engineering-portfolio/projects/roadmoji.html"><span class="tile-icon">◉</span>Roadmoji</button>
+        <button type="button" class="tile" data-value="https://github.com/GarryBajwa/d455-3d-scanner"><span class="tile-icon">◈</span>D455 Scanner</button>
         <button type="button" class="tile" data-value="https://www.linkedin.com/in/gurwinderjit-singh/"><span class="tile-icon">in</span>LinkedIn</button>
-        <button type="button" class="tile" data-value="https://github.com/bajwa95"><span class="tile-icon">⌘</span>GitHub</button>
+        <button type="button" class="tile" data-value="https://github.com/garrybajwa"><span class="tile-icon">⌘</span>GitHub</button>
         <button type="button" class="tile" data-value="https://wa.me/16047109790?text=Hi%20Garry"><span class="tile-icon">✆</span>WhatsApp</button>
         <button type="button" class="tile" data-value="custom"><span class="tile-icon">＋</span>Custom URL</button>
       </div>
@@ -98,13 +98,13 @@
     <section class="card warning">
       <h2>One-time NFC setup</h2>
       <p class="muted">Write this permanent URL to the NFC tag:</p>
-      <p><code>https://bajwa95.github.io/engineering-portfolio/go/</code></p>
+      <p><code>https://garrybajwa.github.io/engineering-portfolio/go/</code></p>
       <p class="muted small">After that, leave the tag unchanged. Use this manager whenever you want the tag to open a different page.</p>
     </section>
   </main>
 
   <script>
-    const owner="bajwa95", repo="engineering-portfolio", path="go/config.json", branch="main";
+    const owner="garrybajwa", repo="engineering-portfolio", path="go/config.json", branch="main";
     const api=`https://api.github.com/repos/${owner}/${repo}/contents/${path}`;
     const repoApi=`https://api.github.com/repos/${owner}/${repo}`;
     const SESSION_TOKEN_KEY="engineeringPortfolioGithubToken";
@@ -121,17 +121,17 @@
     const lockAdmin=document.getElementById("lockAdmin");
 
     let currentSha="";
-    let selectedValue="https://bajwa95.github.io/engineering-portfolio/";
+    let selectedValue="https://garrybajwa.github.io/engineering-portfolio/";
     let activeToken="";
 
     const labels={
-      "https://bajwa95.github.io/engineering-portfolio/":"Portfolio Home",
-      "https://bajwa95.github.io/engineering-portfolio/projects/komo-cnc/":"KOMO CNC Case Study",
-      "https://bajwa95.github.io/engineering-portfolio/projects/central-display/":"Central Display Platform",
-      "https://bajwa95.github.io/engineering-portfolio/projects/roadmoji/":"Roadmoji",
-      "https://bajwa95.github.io/engineering-portfolio/projects/d455-3d-scanner/":"D455 3D Scanner",
+      "https://garrybajwa.github.io/engineering-portfolio/":"Portfolio Home",
+      "https://garrybajwa.github.io/engineering-portfolio/projects/komo-cnc.html":"KOMO CNC Case Study",
+      "https://garrybajwa.github.io/engineering-portfolio/projects/display-platform.html":"Central Display Platform",
+      "https://garrybajwa.github.io/engineering-portfolio/projects/roadmoji.html":"Roadmoji",
+      "https://github.com/GarryBajwa/d455-3d-scanner":"D455 3D Scanner",
       "https://www.linkedin.com/in/gurwinderjit-singh/":"LinkedIn Profile",
-      "https://github.com/bajwa95":"GitHub Profile",
+      "https://github.com/garrybajwa":"GitHub Profile",
       "https://wa.me/16047109790?text=Hi%20Garry":"WhatsApp — Hi Garry"
     };
 
