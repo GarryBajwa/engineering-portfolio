@@ -88,9 +88,9 @@
           <span class="impact-caption">Reported preparation time saved per production schedule by a related TPO generator</span>
         </div>
         <div class="project-impact-metric">
-          <span class="impact-label">Drawing / machine checks</span>
-          <strong class="impact-number">Minutes</strong>
-          <span class="impact-caption">Certain previously long-running compatibility or correction issues resolved in minutes</span>
+          <span class="impact-label">Drawing / machine compatibility check</span>
+          <strong class="impact-number">&lt;1 second</strong>
+          <span class="impact-caption">Reported automatic pre-run check during G-code generation</span>
         </div>
         <div class="project-impact-metric">
           <span class="impact-label">Production KPI levels</span>
@@ -110,15 +110,15 @@
           <tbody>
             <tr><td>Production status and KPIs</td><td>Manual status checks, fragmented records and limited consistent baseline data</td><td>Scan-derived, automatically updated dashboards and plant / department / employee analysis</td></tr>
             <tr><td>TPO / schedule preparation</td><td>Repeated manual schedule preparation and inspection</td><td>Related automated generator; approximately 20–40 minutes saved per schedule</td></tr>
-            <tr><td>2D drawing and machine compatibility</td><td>Some drawing, layer or machine-compatibility corrections remained unresolved for extended periods</td><td>Related drawing validation / correction tooling helped identify and resolve selected issues in minutes</td></tr>
+            <tr><td>2D drawing and machine compatibility</td><td>Drawing, layer or machine-compatibility issues could go unnoticed until engineering review or machine preparation</td><td>Related tooling automatically checks compatibility during G-code generation before each machine run; reported check time is under one second, with corrections handled separately</td></tr>
             <tr><td>Tracking and planning</td><td>Hard to reconstruct prior production status or compare actual labour and output</td><td>Time-stamped records for backtracking, performance review, capacity planning and future analysis</td></tr>
           </tbody>
         </table>
       </div>
       <p class="project-impact-footnote">
         <strong>Evidence and scope:</strong> The 20–40 minutes per schedule is a reported workflow-time saving, not a timed independent study.
-        The drawing-check result describes specific cases where issues that had remained unresolved for months could be diagnosed or corrected in minutes;
-        it is not a claim that months of labour were saved or that every drawing processes that quickly.
+        The reported sub-second figure refers to the automated compatibility check performed alongside G-code generation before each machine run, not automatic correction of incompatible drawings.
+        This timing is based on operational experience rather than a formal software benchmark; flagged drawing issues may still require separate engineering corrections.
         The drawing and TPO utilities are part of the broader manufacturing software ecosystem, not claimed as native Tag-Scanning server features.
         Live KPI accuracy depends on correct scanning and exception handling. No audited total savings, error-reduction percentage or predictive-model deployment is claimed.
       </p>
@@ -238,7 +238,7 @@
     <div class="case-block"><strong>Leftover-material management</strong><span>A separate application used by design engineering tracked reusable sheet remnants. Suitable leftover material could be associated with future cutting requirements.</span></div>
     <div class="case-block"><strong>Ticketed reuse workflow</strong><span>When a full sheet was required, an available remainder could be set aside with a ticket and recorded in the leftover system for later suggestions. The leftover-data store is distinct from the confirmed Excel-backed production records.</span></div>
     <div class="case-block"><strong>TPO schedule generator</strong><span>A companion engineering utility generated schedule-related TPO outputs instead of requiring repetitive manual preparation. Based on operational experience, this avoided approximately 20–40 minutes of preparation per schedule and reduced opportunities for transcription or selection errors; a measured error-reduction rate is not available.</span></div>
-    <div class="case-block"><strong>2D drawing and CNC compatibility checks</strong><span>Related DXF layer-correction and CAD/CAM validation tools helped identify drawing conventions, mismatches and machining-compatibility issues. In specific cases, problems that had remained unresolved for months were isolated and corrected within minutes; this is a reported turnaround improvement, not a measured average or months of labour saved.</span></div>
+    <div class="case-block"><strong>2D drawing and CNC compatibility checks</strong><span>Related DXF / CAD-CAM tooling automatically checks 2D drawing compatibility with the selected machine as G-code is generated, before each machine run. The reported check executes in under one second and flags issues early; resolving an incompatible drawing is a separate process. This replaced slow, manual discovery of some problems that previously remained unresolved for extended periods.</span></div>
     <div class="case-block"><strong>Style-name and kit-data governance</strong><span>A separate controlled CAD/CAM workflow scanned 3,991 kit records and supported exact matching, controlled renaming, conflict checks, dry runs, exception review and decision logs. Uncertain matches were held for review rather than silently changed.</span></div>
     <div class="case-block"><strong>Engineering-to-production feedback</strong><span>Linking schedule preparation, drawing validation, production tickets and CNC-side status helped expose upstream engineering inconsistencies before they became recurring shop-floor issues. The companion utilities are not assumed to communicate directly with every central-server API.</span></div>
   </div></article></div>
@@ -279,7 +279,7 @@
     <span>HTML / CSS / JavaScript</span><span>QuaggaJS</span><span>Code 128</span><span>Flask APIs</span><span>Real-Time Dashboards</span>
     <span>Production Traceability</span><span>Labour Analysis</span><span>Live KPI Reporting</span><span>Production Capacity</span><span>Engineering Validation</span><span>TPO Automation</span><span>CAD/CAM Governance</span><span>Manufacturing Systems</span><span>Shop-Floor Deployment</span><span>Employee Training</span><span>Cross-Functional Leadership</span>
   </div>
-  <div class="media-note tag-disclosure"><strong>Publication note:</strong> This case study describes employer-developed internal software at a high level, with related applications distinguished from verified central-server integrations. It does not publish source code, real employee/customer data, workbook templates, credentials, internal network addresses, confidential production figures or proprietary procedures. Visual examples use sample data. The stated schedule-time saving and months-to-minutes cases are experience-based reports, not audited financial or productivity measurements.</div>
+  <div class="media-note tag-disclosure"><strong>Publication note:</strong> This case study describes employer-developed internal software at a high level, with related applications distinguished from verified central-server integrations. It does not publish source code, real employee/customer data, workbook templates, credentials, internal network addresses, confidential production figures or proprietary procedures. Visual examples use sample data. The stated schedule-time saving and sub-second automated compatibility check are experience-based reports, not independently benchmarked or audited productivity measurements.</div>
   <div class="project-nav"><a href="display-platform.html">← Display Platform</a><a href="../index.html#projects">All projects →</a></div>
 </div></section>
 </main>
