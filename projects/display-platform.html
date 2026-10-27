@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Centralized multi-screen display rendering platform developed in Python and Flask with Socket.IO monitoring, remote refresh, media management and Raspberry Pi display clients.">
+  <meta name="description" content="Centralized Raspberry Pi display platform showing live Tag-Scanning manufacturing KPIs, safety guidance and automatically routed media across indoor screens and a large LED display using folder drop, filename-based timing and remote monitoring.">
   <title>Centralized Multi-Screen Display Platform | Garry Bajwa</title>
-  <link rel="stylesheet" href="../styles.css?v=20261026type1">
+  <link rel="stylesheet" href="../styles.css?v=20261027impact1">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header"><div class="container nav-wrap">
   <a class="brand" href="../index.html"><span class="brand-mark">GB</span><span>Garry Bajwa</span></a>
-  <nav class="nav"><a href="../index.html#projects">Projects</a><a href="../index.html#capabilities">Capabilities</a><a href="../index.html#contact">Contact</a></nav>
+  <nav class="nav"><a href="../index.html#projects">Projects</a><a href="#impact">Impact</a><a href="#integration">Integration</a><a href="../index.html#contact">Contact</a></nav>
 </div></header>
 
 <main id="main">
@@ -19,53 +19,122 @@
   <div class="case-title">
     <p class="eyebrow">Custom Software · Systems Integration · Raspberry Pi</p>
     <h1>Centralized Multi-Screen Display Platform</h1>
-    <p class="lead">A custom server-side software solution developed to make multiple unattended displays simple for users to update, monitor and refresh from one central interface.</p>
-    <div class="case-meta"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">Socket.IO</span><span class="tag">Raspberry Pi</span><span class="tag">Linux</span></div>
+    <p class="lead">A centralized display platform that brought live Tag-Scanning production KPIs, safety guidance and screen-specific media to shop-floor monitors and a large LED display. Users could simply drag files into the correct folder and specify on-screen duration in the filename; the software handled routing, playback and updates.</p>
+    <div class="case-meta"><span class="tag">Python</span><span class="tag">Flask</span><span class="tag">Socket.IO</span><span class="tag">Raspberry Pi</span><span class="tag">Live Production KPIs</span><span class="tag">Folder-Based Media</span><span class="tag">Linux</span></div>
   </div>
 
   <div class="case-cover" style="background-image:linear-gradient(180deg,rgba(8,42,70,.04),rgba(8,42,70,.78)),url('../assets/display/display-manager.png'),linear-gradient(135deg,#9ed8f5,#5db8b5);">
     <div class="case-cover-copy">
       <strong>Centralized Display Manager</strong>
-      <span>One interface for display status, current media, remote refresh and screen-specific control.</span>
+      <span>Live production dashboards, safety messages and folder-driven media controlled across indoor and LED endpoints.</span>
     </div>
   </div>
 
   <div class="case-intro-grid">
-    <div class="detail-card"><h3>Engineering objective</h3><p>Give users one practical place to manage content across multiple unattended screens without manually configuring each endpoint.</p></div>
-    <div class="detail-card"><h3>My contribution</h3><p>I developed the centralized software workflow for media distribution, screen-specific rendering, display registration, heartbeat monitoring and remote refresh.</p></div>
-    <div class="detail-card"><h3>Operational outcome</h3><p>The platform provided central visibility of connected-screen status and current media while serving both indoor screens and a large-format LED endpoint through Raspberry Pi clients.</p></div>
+    <div class="detail-card"><h3>Engineering objective</h3><p>Make live shop-floor KPIs visible where work happens, distribute safety information, and remove the need to individually update screens or configure playback settings.</p></div>
+    <div class="detail-card"><h3>My contribution</h3><p>I developed centralized media routing, folder and filename-based playback control, Raspberry Pi display rendering, endpoint registration, heartbeat monitoring and remote refresh, alongside integration of live manufacturing dashboards.</p></div>
+    <div class="detail-card"><h3>Operational outcome</h3><p>Operators and supervisors could view live Tag-Scanning production metrics on shared displays; staff could update safety notices and media by dropping files into screen-specific folders. The same platform served indoor screens and a large-format LED display.</p></div>
   </div>
 
   <div class="system-diagram">
-    <p class="eyebrow">Software architecture</p>
+    <p class="eyebrow">Software architecture · two content sources</p>
     <div class="flow">
-      <span class="node">User Media Folders</span><span class="arrow">→</span>
-      <span class="node">Python / Flask Server</span><span class="arrow">↔</span>
-      <span class="node">Socket.IO</span><span class="arrow">↔</span>
+      <span class="node"><a href="tag-scanning.html">Tag-Scanning live KPI dashboards</a></span><span class="arrow">→</span>
+      <span class="node">Display Platform</span><span class="arrow">→</span>
       <span class="node">Raspberry Pi / Browser Clients</span><span class="arrow">→</span>
+      <span class="node">Indoor Screens + LED Display</span>
+    </div>
+    <div class="flow" style="margin-top:16px">
+      <span class="node">Screen-Specific Media Folders</span><span class="arrow">→</span>
+      <span class="node">Filename Playback Duration</span><span class="arrow">→</span>
+      <span class="node">Automatic Media Discovery / Routing</span><span class="arrow">→</span>
       <span class="node">Assigned Displays</span>
     </div>
+    <p class="project-impact-footnote">Live production dashboards originated from the separate Tag-Scanning System. The display platform delivered centrally managed views and media to endpoints; Socket.IO supported endpoint updates, status and remote commands.</p>
   </div>
 </div></section>
 
-<div class="project-brief-wrap"><div class="container"><div class="project-brief"><span class="project-brief-label">Project overview</span><p>Several unattended displays needed a simpler way to receive screen-specific media and report their operating status without manual updates at each endpoint. I developed a centralized Python/Flask platform for content delivery, heartbeat monitoring, current-media visibility and remote display control.</p></div></div></div>
+<div class="project-brief-wrap"><div class="container"><div class="project-brief"><span class="project-brief-label">Project overview</span><p>This software complemented the <a href="tag-scanning.html">Tag-Scanning Manufacturing System</a> by putting live production and KPI dashboards directly on screens around the plant. It also supplied safety guidelines and other visual notices through a self-service workflow: place an image, GIF or video in the designated display folder, include its desired display delay in the filename, and let the server discover, schedule and route it. The same centralized service supported indoor displays and a large LED matrix endpoint, with live monitoring and remote refresh.</p></div></div></div>
+
+
+<section id="impact" class="project-impact-section" aria-labelledby="display-impact-title">
+  <div class="container">
+    <div class="project-impact-card">
+      <div class="project-impact-heading">
+        <div>
+          <p class="eyebrow">Project impact</p>
+          <h2 id="display-impact-title">Production visibility and screen updates without individual configuration</h2>
+        </div>
+        <span class="project-impact-context">Deployed across multiple screens</span>
+      </div>
+      <div class="project-impact-grid">
+        <div class="project-impact-metric">
+          <span class="impact-label">Manufacturing data on screens</span>
+          <strong class="impact-number cost">Live KPIs</strong>
+          <span class="impact-caption">Production indicators from the Tag-Scanning System</span>
+        </div>
+        <div class="project-impact-metric">
+          <span class="impact-label">Content publishing</span>
+          <strong class="impact-number">Drag &amp; drop</strong>
+          <span class="impact-caption">Place a file in its assigned display folder</span>
+        </div>
+        <div class="project-impact-metric">
+          <span class="impact-label">Playback timing</span>
+          <strong class="impact-number">Automatic</strong>
+          <span class="impact-caption">Display duration specified in media filename</span>
+        </div>
+        <div class="project-impact-metric">
+          <span class="impact-label">Display coverage</span>
+          <strong class="impact-number">Indoor + LED</strong>
+          <span class="impact-caption">Shared software for regular screens and a large matrix display</span>
+        </div>
+      </div>
+      <h3 class="project-impact-subheading">Before vs. after</h3>
+      <div class="project-impact-table-wrap">
+        <table class="project-impact-table">
+          <thead><tr><th scope="col">Workflow</th><th scope="col">Earlier approach / limitation</th><th scope="col">Centralized platform</th></tr></thead>
+          <tbody>
+            <tr><td>Production visibility</td><td>Checking the Tag-Scanning dashboard required opening it at a separate workstation or asking for updates</td><td>Shared screens presented current production dashboards and KPIs to teams</td></tr>
+            <tr><td>Publishing safety and other media</td><td>Individual screen updates and playback setup created manual work</td><td>Drop files in screen-specific folders; the software discovers and publishes them</td></tr>
+            <tr><td>Duration and destination</td><td>Content placement and display timing required user attention</td><td>Folder assignment selects the screen, and the filename controls display duration</td></tr>
+            <tr><td>Screen monitoring</td><td>Harder to confirm every unattended endpoint was functioning</td><td>Central heartbeat status, current-media visibility and remote refresh</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="project-impact-footnote"><strong>Impact basis:</strong> These are implemented features and workflow improvements, not an audited time-saving or financial estimate. The number of managed endpoints, update frequency and labour time saved were not formally established for this case study. Live production metrics came from Tag-Scanning; the display application also served static safety guidance and other media.</p>
+    </div>
+  </div>
+</section>
 
 <section class="section"><div class="container">
   <p class="eyebrow">Case 01</p>
   <h2>From manual screen updates to one central workflow</h2>
-  <p class="section-intro">The software was designed around the user’s real task: put the right media on the right screen, confirm that the screen is alive, and recover it remotely when needed.</p>
+  <p class="section-intro">The user workflow was deliberately simple: put the right file into the corresponding display folder with its duration encoded in the filename. The software determined the destination, playback interval, media handling and screen update without requiring the user to edit code or visit a Raspberry Pi.</p>
   <div class="case-list">
     <article class="case-card"><div class="case-grid">
       <div class="case-block"><strong>Screen-specific media</strong><span>Each display was associated with its own media folder and endpoint so content could be managed independently without hard-coding every screen into the user workflow.</span></div>
       <div class="case-block"><strong>Automatic discovery</strong><span>The server discovered configured media folders and generated the corresponding display routes automatically.</span></div>
-      <div class="case-block"><strong>Simple updates</strong><span>Users could add, remove or rename supported media files in the appropriate folder instead of editing application code or visiting each screen.</span></div>
-      <div class="case-block"><strong>Mixed media</strong><span>The rendering workflow supported images, GIFs and MP4 video, including configurable image timing and video playback handling.</span></div>
+      <div class="case-block"><strong>Drag-and-drop publishing</strong><span>Users added, removed or renamed supported media inside a screen-specific folder. The server handled discovery and distribution without editing application code or visiting the display.</span></div>
+      <div class="case-block"><strong>Filename-controlled timing</strong><span>Media filenames encoded the requested delay, so the software could apply the desired on-screen duration automatically. Supported content included images, GIFs and MP4 video, with playback handling appropriate to the media type.</span></div>
     </div></article>
   </div>
 </div></section>
 
+<section id="integration" class="section section-alt"><div class="container">
+  <p class="eyebrow">Case 02 · Manufacturing integration</p>
+  <h2>Live Tag-Scanning KPIs and safety communication on shared screens</h2>
+  <p class="section-intro">This platform was part of a wider digital manufacturing workflow. Tag-Scanning generated up-to-date production information; the display platform made that information visible throughout the workplace while also handling safety guidelines and general media.</p>
+  <div class="case-list"><article class="case-card"><div class="case-grid">
+    <div class="case-block"><strong>Production and department dashboards</strong><span>Live manufacturing views from the separate <a href="tag-scanning.html">Tag-Scanning System</a> showed changing production status and KPIs without repeatedly preparing and circulating manual updates.</span></div>
+    <div class="case-block"><strong>Safety guidance</strong><span>Staff could publish safety notices and guidance using the same folder-based system, allowing information to appear on the intended screens without rebuilding the application.</span></div>
+    <div class="case-block"><strong>Single distribution model</strong><span>The same centrally managed rendering and endpoint infrastructure served standard indoor screens and a large LED matrix display, with content routed to the appropriate endpoint.</span></div>
+    <div class="case-block"><strong>Accessible daily updates</strong><span>Normal content changes required file placement rather than modifying HTML, restarting individual displays or reconfiguring Raspberry Pi clients.</span></div>
+  </div></article></div>
+  <div class="callout">The less obvious operational benefit was shared situational awareness: manufacturing KPIs were available where employees and supervisors worked, while safety communication used the same managed screen network. No percentage improvement in safety, productivity or decision speed is claimed without measured data.</div>
+</div></section>
+
 <section class="section section-alt"><div class="container">
-  <p class="eyebrow">Case 02</p>
+  <p class="eyebrow">Case 03 · Monitoring and control</p>
   <h2>Live status and remote display control</h2>
   <p class="section-intro">The browser-based Display Manager turned the system into an operational tool rather than just a slideshow server.</p>
   <div class="case-list">
@@ -93,7 +162,7 @@
 </div></section>
 
 <section class="section"><div class="container">
-  <p class="eyebrow">Case 03</p>
+  <p class="eyebrow">Case 04 · Reliability</p>
   <h2>Unattended display reliability</h2>
   <p class="section-intro">The endpoints were intended to run continuously, so the software included behavior for automatic media updates and recovery from common playback problems.</p>
   <div class="case-list">
@@ -123,12 +192,12 @@
 <section class="section section-alt"><div class="container">
   <p class="eyebrow">Engineering value</p>
   <h2>Custom software built around the operator</h2>
-  <p class="section-intro">The system combined backend services, networking, endpoint behavior and a user-facing control layer into one practical internal tool.</p>
+  <p class="section-intro">The system combined live manufacturing data delivery, staff-managed safety messaging, backend services, networked Raspberry Pi endpoints and centralized monitoring into a practical digital-signage layer for daily plant operations.</p>
   <div class="skill-cloud">
     <span>Python</span><span>Flask</span><span>Flask-SocketIO</span><span>Watchdog</span><span>HTML / JavaScript</span>
-    <span>Raspberry Pi</span><span>Linux</span><span>Networking</span><span>Real-Time Monitoring</span><span>Systems Integration</span>
+    <span>Raspberry Pi</span><span>Linux</span><span>Networking</span><span>Live KPI Displays</span><span>Safety Communications</span><span>Filename-Driven Playback</span><span>Real-Time Monitoring</span><span>Systems Integration</span>
   </div>
-  <div class="media-note">The large-format LED screen appears here only as a software-rendering endpoint because it used the same Raspberry Pi client and centralized server. Its physical installation, electronics, power and networking work will be documented separately as a hardware-integration project. Future concepts such as production metrics, bottleneck alerts and 3D rendering are not presented here as deployed functionality.</div>
+  <div class="media-note"><strong>Scope note:</strong> Live production metrics from the Tag-Scanning System were displayed using this platform; they are deployed functionality, not future concepts. The large-format LED is documented here as a software endpoint, not as a claim of performing all of its physical installation and electrical work. Predictive bottleneck alerts, automated safety outcomes and 3D rendering are not claimed as deployed features. Quantified labour savings have not yet been measured.</div>
 </div></section>
 
 <section class="section"><div class="container">
