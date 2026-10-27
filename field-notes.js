@@ -15,7 +15,7 @@
   const categoryOrder = [
     "Preventive Maintenance", "Repairs & Troubleshooting",
     "Diagnostics & Inspections", "Small Improvements",
-    "Builds & Prototypes", "Illustrative References"
+    "Builds & Prototypes"
   ];
   const present = [...new Set(entries.map(item => item.category || "Other"))];
   const categories = present.sort((a, b) => {
