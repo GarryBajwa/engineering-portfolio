@@ -1,6 +1,21 @@
 (function () {
   const allProjects = Array.isArray(window.PORTFOLIO_PROJECTS) ? [...window.PORTFOLIO_PROJECTS] : [];
+  // Lead with maintenance and automation work. Keep the deeper project library accessible.
+  const featuredOrder = [
+    "projects/fiber-filling-plc-retrofit.html",
+    "projects/komo-cnc.html",
+    "projects/forklift-workstation.html",
+    "projects/tag-scanning.html"
+  ];
+  const highlightCount = featuredOrder.length;
   const projects = allProjects.sort((a, b) => {
+    const rankA = featuredOrder.indexOf(a.href);
+    const rankB = featuredOrder.indexOf(b.href);
+    if (rankA !== -1 || rankB !== -1) {
+      if (rankA === -1) return 1;
+      if (rankB === -1) return -1;
+      return rankA - rankB;
+    }
     const orderA = Number.isFinite(Number(a.order)) ? Number(a.order) : 9999;
     const orderB = Number.isFinite(Number(b.order)) ? Number(b.order) : 9999;
     if (orderA !== orderB) return orderA - orderB;
@@ -20,7 +35,8 @@
     if (count) count.textContent = projects.length + (projects.length === 1 ? " project" : " projects");
 
     projects.forEach((project, index) => {
-      const card = make("article", "project-card" + (project.featured ? " featured" : ""));
+      const card = make("article", "project-card" + (index < highlightCount ? " featured" : ""));
+      if (index >= highlightCount) card.classList.add("is-extra-project", "is-collapsed");
 
       const media = make("div", "project-media");
       const fallback = make("div", "project-image-fallback");
@@ -62,6 +78,23 @@
 
       grid.appendChild(card);
     });
+
+    const more = document.getElementById("project-more");
+    const moreToggle = document.getElementById("project-more-toggle");
+    if (more && moreToggle && projects.length > highlightCount) {
+      const allLabel = "Explore all " + projects.length + " engineering projects";
+      moreToggle.textContent = allLabel;
+      more.hidden = false;
+      let expanded = false;
+      moreToggle.addEventListener("click", () => {
+        expanded = !expanded;
+        grid.querySelectorAll(".is-extra-project").forEach(card => {
+          card.classList.toggle("is-collapsed", !expanded);
+        });
+        moreToggle.setAttribute("aria-expanded", String(expanded));
+        moreToggle.textContent = expanded ? "Show highlighted projects" : allLabel;
+      });
+    }
   }
 
   const capabilityLabels = {
