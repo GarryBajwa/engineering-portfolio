@@ -1556,3 +1556,130 @@ p,li,figcaption,.project-card p,.case-block span,.detail-card p,
   .hero-actions{gap:9px}
   .hero-actions .button{padding-inline:14px}
 }
+
+/* Reusable engineering project impact panel */
+.project-impact-section{
+  padding:34px 0 62px;
+  background:linear-gradient(180deg,#fff 0%,#f6fafd 100%);
+}
+.project-impact-card{
+  border:1px solid #cbdfeb;
+  border-radius:23px;
+  padding:clamp(21px,3.1vw,36px);
+  background:#fff;
+  box-shadow:0 16px 43px rgba(29,70,105,.075);
+}
+.project-impact-heading{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:22px;
+  margin-bottom:26px;
+}
+.project-impact-heading .eyebrow{margin:0 0 7px}
+.project-impact-heading h2{
+  font-size:clamp(1.65rem,2.5vw,2.4rem);
+  line-height:1.16;
+  margin:0;
+}
+.project-impact-context{
+  display:inline-flex;
+  align-items:center;
+  flex-shrink:0;
+  padding:9px 13px;
+  border:1px solid #cde1ed;
+  border-radius:999px;
+  background:#f0f8fd;
+  color:#365970;
+  font-size:.83rem;
+  font-weight:750;
+}
+.project-impact-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:13px;
+}
+.project-impact-metric{
+  min-width:0;
+  padding:20px 17px;
+  border:1px solid #dce7f0;
+  border-radius:16px;
+  background:linear-gradient(145deg,#f8fbfe,#f0f8ff);
+}
+.project-impact-metric .impact-label{
+  display:block;
+  color:#526b80;
+  font-size:.8rem;
+  font-weight:750;
+  line-height:1.35;
+  min-height:2.7em;
+}
+.project-impact-metric .impact-number{
+  display:block;
+  margin:10px 0 7px;
+  font-size:clamp(1.65rem,2.75vw,2.45rem);
+  font-weight:850;
+  letter-spacing:-.045em;
+  line-height:1.13;
+  font-variant-numeric:tabular-nums;
+  color:#153e64;
+}
+.project-impact-metric .impact-number.cost{
+  color:#007f7a;
+}
+.project-impact-metric .impact-caption{
+  display:block;
+  color:#5d7284;
+  font-size:.79rem;
+  line-height:1.45;
+}
+.project-impact-subheading{
+  font-size:1rem;
+  color:#243e56;
+  margin:27px 0 12px;
+  font-weight:800;
+}
+.project-impact-table-wrap{
+  overflow-x:auto;
+  border:1px solid #dce7ef;
+  border-radius:14px;
+}
+.project-impact-table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:.91rem;
+  text-align:left;
+}
+.project-impact-table th,
+.project-impact-table td{
+  text-align:left;
+  padding:12px 15px;
+  line-height:1.45;
+  vertical-align:top;
+}
+.project-impact-table thead{background:#eef6fb}
+.project-impact-table th{color:#2a4e69;font-weight:800}
+.project-impact-table tbody tr+tr{border-top:1px solid #e0eaf1}
+.project-impact-table tbody tr:nth-child(even){background:#f9fcfe}
+.project-impact-table tbody td:first-child{font-weight:720;color:#2d465b}
+.project-impact-table td:last-child{color:#126b69;font-weight:730}
+.project-impact-footnote{
+  color:#5d7184;
+  font-size:.84rem;
+  line-height:1.55;
+  margin:14px 0 0;
+  max-width:90ch;
+}
+@media(max-width:1000px){
+  .project-impact-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:600px){
+  .project-impact-section{padding:22px 0 44px}
+  .project-impact-card{border-radius:17px;padding:18px}
+  .project-impact-heading{flex-direction:column;gap:13px}
+  .project-impact-grid{gap:10px}
+  .project-impact-metric{padding:16px 12px}
+  .project-impact-metric .impact-label{font-size:.76rem}
+  .project-impact-metric .impact-number{font-size:clamp(1.48rem,6vw,2rem)}
+  .project-impact-table th,.project-impact-table td{padding:10px;font-size:.81rem}
+}
