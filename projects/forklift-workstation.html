@@ -4,13 +4,13 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="Forklift-mounted workstation power integration case study: replacing short-runtime UPS units with a fused DC-DC power solution for a thermal printer and Windows tablet computer.">
   <title>Forklift Workstation Power Integration | Garry Bajwa</title>
-  <link rel="stylesheet" href="../styles.css?v=20261026type1">
+  <link rel="stylesheet" href="../styles.css?v=20261027impact1">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="site-header"><div class="container nav-wrap">
   <a class="brand" href="../index.html"><span class="brand-mark">GB</span><span>Garry Bajwa</span></a>
-  <nav class="nav"><a href="../index.html#projects">Projects</a><a href="#problem">Problem</a><a href="#design">Design</a><a href="#validation">Validation</a></nav>
+  <nav class="nav"><a href="../index.html#projects">Projects</a><a href="#impact">Impact</a><a href="#problem">Problem</a><a href="#design">Design</a><a href="#validation">Validation</a></nav>
 </div></header>
 
 <main id="main">
@@ -34,6 +34,59 @@
 </div></section>
 
 <div class="project-brief-wrap"><div class="container"><div class="project-brief"><span class="project-brief-label">Project overview</span><p>Three forklift workstations depended on portable UPS units to power a 24 V thermal label printer and a 20 V Windows tablet, creating repeated charging, runtime and cost problems. I redesigned the power approach around the forklift’s 32 V electrical system so both loads could operate reliably through the shift without rotating UPS units.</p></div></div></div>
+
+<section id="impact" class="project-impact-section" aria-labelledby="forklift-impact-title">
+  <div class="container">
+    <div class="project-impact-card">
+      <div class="project-impact-heading">
+        <div>
+          <p class="eyebrow">Project impact</p>
+          <h2 id="forklift-impact-title">Full-shift power, without UPS swapping</h2>
+        </div>
+        <span class="project-impact-context">3 forklift workstations</span>
+      </div>
+      <div class="project-impact-grid">
+        <div class="project-impact-metric">
+          <span class="impact-label">Lower compared hardware cost</span>
+          <strong class="impact-number cost">95.4%</strong>
+          <span class="impact-caption">Based on original UPS hardware vs. retrofit components</span>
+        </div>
+        <div class="project-impact-metric">
+          <span class="impact-label">Hardware cost difference</span>
+          <strong class="impact-number">$6,870</strong>
+          <span class="impact-caption">Across 3 forklift installations; not audited cash savings</span>
+        </div>
+        <div class="project-impact-metric">
+          <span class="impact-label">Previous UPS runtime</span>
+          <strong class="impact-number">~2 hours</strong>
+          <span class="impact-caption">Per UPS charge during an 8-hour shift</span>
+        </div>
+        <div class="project-impact-metric">
+          <span class="impact-label">New operating coverage</span>
+          <strong class="impact-number">8-hour shift</strong>
+          <span class="impact-caption">Powered from the forklift; no UPS swaps</span>
+        </div>
+      </div>
+
+      <h3 class="project-impact-subheading">Before vs. after</h3>
+      <div class="project-impact-table-wrap">
+        <table class="project-impact-table">
+          <thead><tr><th scope="col">Measurement</th><th scope="col">Before: UPS arrangement</th><th scope="col">After: DC-DC integration</th></tr></thead>
+          <tbody>
+            <tr><td>Hardware cost per workstation</td><td>~$2,400 (2 UPS units)</td><td>~$110 (retrofit components)</td></tr>
+            <tr><td>Compared hardware cost for 3</td><td>~$7,200</td><td>~$330</td></tr>
+            <tr><td>Charging and swapping workflow</td><td>Repeated UPS charging / swaps</td><td>Eliminated during normal operation</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="project-impact-footnote">
+        <strong>Calculation basis:</strong> 3 workstations × (2 UPS units × ~$1,200 each − ~$110 in retrofit parts) = ~$6,870
+        in compared hardware cost, or ~95.4% lower cost per workstation. Labour and installation are excluded.
+        The figure compares two equipment approaches and does not imply that previously purchased UPS units generated an equivalent cash saving.
+      </p>
+    </div>
+  </div>
+</section>
 
 <section id="problem" class="section"><div class="container">
   <p class="eyebrow">01 · Operating problem</p><h2>A temporary backup device had become the permanent power strategy</h2>
