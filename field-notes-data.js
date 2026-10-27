@@ -19,9 +19,9 @@ window.FIELD_NOTES = [
   },
   {
     image: "assets/gate-sensor/original-sensor-corrosion-reconstruction.png",
-    alt: "Illustrative reconstruction showing failure of the original corroded gate contact sensor",
-    category: "Illustrative References",
-    title: "Sensor failure mode — illustration",
-    caption: "Illustrative reconstruction of the original sensor corrosion; not a documentary photograph of the failed component."
+    alt: "Corrosion damage and contact failure in a spring-loaded gate sensor",
+    category: "Repairs & Troubleshooting",
+    title: "Sensor contact corrosion",
+    caption: "Failure mechanism: corrosion and wear affecting spring-loaded electrical contact."
   }
 ];
