@@ -5,7 +5,7 @@ window.PORTFOLIO_PROJECTS = [
     mediaTitle: "Production Traceability Platform",
     mediaSubtitle: "Plant-wide software · barcode scanning · real-time production visibility",
     kicker: "Digital Manufacturing · Production Systems · Software Integration",
-    description: "Designed, developed and deployed a plant-wide manufacturing information platform connecting barcode scanning, employee work records, live production status, labour analysis and related CNC workflows.",
+    description: "Deployed real-time production KPIs and traceability for manufacturing teams, with historical capacity analysis and related engineering tools for error prevention and schedule preparation.",
     tags: ["Python", "Flask", "Socket.IO", "Barcode Scanning", "Production Analytics"],
     href: "projects/tag-scanning.html",
     image: "assets/tag-scanning/Barcode%20Tracking%20in%20the%20Workshop.png",
@@ -173,7 +173,7 @@ window.PORTFOLIO_PROJECTS = [
     mediaTitle: "Fiber Filling Machine PLC Retrofit",
     mediaSubtitle: "Siemens S7-1200 · relay logic modernization · machine sequencing",
     kicker: "PLC Modernization · Machine Controls · Reliability",
-    description: "Converted a sequence-sensitive relay-controlled fiber filling machine to Siemens S7-1200 PLC control with automatic timing, simplified Start/Stop operation and retained VFD/manual feeder functions.",
+    description: "Retrofitted a fiber-filling machine with Siemens S7-1200 controls, automatic clean-out shutdown and powered jam recovery; operational experience indicates roughly one hour of recurring downtime avoided per day.",
     tags: ["Siemens S7-1200", "PLC", "VFD", "Star-Delta", "Machine Controls"],
     href: "projects/fiber-filling-plc-retrofit.html",
     image: "assets/fiber-filling-plc-retrofit/control-panel-after.jpg",
@@ -181,7 +181,7 @@ window.PORTFOLIO_PROJECTS = [
     capabilities: {
       automation: "Replaced operator-dependent relay sequencing with Siemens S7-1200 PLC logic controlling machine startup, shutdown, timing, contactors, VFD run commands and a solenoid valve.",
       electrical: "Mapped and rewired five contactor functions, two VFD run signals and one solenoid output while retaining the existing motor-drive hardware.",
-      manufacturing: "Simplified a sequence-sensitive fiber filling process to power plus Start/Stop operation, reducing opportunities for operator sequencing errors and difficult recovery."
+      manufacturing: "Added shutdown clean-out and powered reverse jam recovery, reducing unsafe manual rollback and recurring stoppages; typical avoided downtime estimated at roughly one hour daily."
     },
     featured: true
   }
