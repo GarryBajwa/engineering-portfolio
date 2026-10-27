@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Fiber filling machine controls modernization: converting manual relay sequencing to Siemens S7-1200 PLC control with programmed timing, VFD run commands and simplified operator controls.">
+  <meta name="description" content="Siemens S7-1200 fiber-filling machine PLC retrofit with automatic clean-out shutdown, motorized jam recovery, simplified controls and an experience-based estimate of approximately one hour of avoided downtime per operating day.">
   <title>Fiber Filling Machine PLC Retrofit | Garry Bajwa</title>
-  <link rel="stylesheet" href="../styles.css?v=20261026type1">
+  <link rel="stylesheet" href="../styles.css?v=20261027impact1">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
 
 <header class="site-header"><div class="container nav-wrap">
   <a class="brand" href="../index.html"><span class="brand-mark">GB</span><span>Garry Bajwa</span></a>
-  <nav class="nav"><a href="../index.html#projects">Projects</a><a href="#problem">Problem</a><a href="#design">PLC Retrofit</a><a href="#panel">Panel</a><a href="#result">Result</a></nav>
+  <nav class="nav"><a href="../index.html#projects">Projects</a><a href="#impact">Impact</a><a href="#problem">Problem</a><a href="#design">PLC Retrofit</a><a href="#panel">Panel</a><a href="#result">Result</a></nav>
 </div></header>
 
 <main id="main">
@@ -21,7 +21,7 @@
   <div class="case-title">
     <p class="eyebrow">PLC Modernization · Machine Controls · Reliability</p>
     <h1>Fiber Filling Machine — Relay Logic to Siemens S7-1200 PLC Retrofit</h1>
-    <p class="lead">Converted a sequence-sensitive relay-controlled fiber filling machine into a PLC-controlled system with automatic timing, simplified operator controls and an added emergency-stop function.</p>
+    <p class="lead">Converted a sequence-sensitive relay-controlled fiber filling machine into a Siemens S7-1200 PLC system with automated clean-out shutdown and powered reverse-running for jam recovery. The retrofit reduced recurring unplanned stoppages and the need for hazardous manual roller intervention.</p>
     <div class="case-meta">
       <span class="tag">Siemens S7-1200</span><span class="tag">PLC</span><span class="tag">Relay Logic</span><span class="tag">VFD</span><span class="tag">Star-Delta</span><span class="tag">Machine Retrofit</span>
     </div>
@@ -30,13 +30,13 @@
   <div class="case-cover" style="background-image:linear-gradient(180deg,rgba(8,42,70,.06),rgba(8,42,70,.82)),url('../assets/fiber-filling-plc-retrofit/machine-overview.jpg'),linear-gradient(135deg,#8bcbe8,#66aaa8);">
     <div class="case-cover-copy">
       <strong>Controls modernization</strong>
-      <span>Manual relay sequencing was replaced by PLC-controlled startup, shutdown and timing while retaining the machine’s useful manual feeder functions.</span>
+      <span>PLC sequencing added controlled clean-out before shutdown and powered reverse-running to help release trapped fiber while retaining useful operator controls.</span>
     </div>
   </div>
 
   <div class="case-intro-grid">
-    <div class="detail-card"><h3>Engineering objective</h3><p>Make the machine easier to operate and less dependent on operator timing while reducing sequence-related resets, fiber jams and relay-logic troubleshooting complexity.</p></div>
-    <div class="detail-card"><h3>My contribution</h3><p>I reviewed the existing relay-controlled sequence, mapped the machine loads and control outputs, selected the PLC/output architecture, rewired the control system and programmed the startup, shutdown and timing logic.</p></div>
+    <div class="detail-card"><h3>Engineering objective</h3><p>Reduce recurring stoppages and the need for manual fiber-jam clearing by automating the machine sequence, running out remaining fiber before shutdown, and providing powered reverse-running for recovery.</p></div>
+    <div class="detail-card"><h3>My contribution</h3><p>I reviewed the existing relay-controlled sequence, mapped machine loads, selected and installed the PLC/output architecture, rewired controls, and developed startup, shutdown clean-out, and fault-recovery operating logic.</p></div>
     <div class="detail-card"><h3>Control architecture</h3><p>Siemens S7-1200 PLC with one digital output expansion module controlling five contactor functions, two VFD run commands and one solenoid valve.</p></div>
   </div>
 
@@ -54,8 +54,56 @@
 
 <div class="project-brief-wrap"><div class="container"><div class="project-brief">
   <span class="project-brief-label">Project overview</span>
-  <p>The original machine required the operator to manually execute a strict multi-button startup and shutdown sequence. I replaced the relay-based sequencing with a Siemens S7-1200 PLC so the machine could execute the required order and delays automatically from simple Start/Stop controls while preserving the manual feeder and direction functions operators still needed.</p>
+  <p>The original machine depended on a strict manual startup and shutdown sequence. Unexpected stops could leave fiber trapped around saw-toothed opener and feed rollers, leading to difficult, potentially hazardous manual rollback and lengthy stoppages. I replaced the relay-based sequence with Siemens S7-1200 PLC control, added a timed empty-running clean-out before normal shutdown, and enabled powered reverse-running of the opener cylinder and feed rollers to help clear jams. The redesign also retained useful manual feeder controls.</p>
 </div></div></div>
+
+<section id="impact" class="project-impact-section" aria-labelledby="fiber-impact-title">
+  <div class="container">
+    <div class="project-impact-card">
+      <div class="project-impact-heading">
+        <div>
+          <p class="eyebrow">Project impact</p>
+          <h2 id="fiber-impact-title">Less downtime, safer recovery from fiber jams</h2>
+        </div>
+        <span class="project-impact-context">Experience-based estimate</span>
+      </div>
+      <div class="project-impact-grid">
+        <div class="project-impact-metric">
+          <span class="impact-label">Typical downtime avoided</span>
+          <strong class="impact-number cost">~1 hour/day</strong>
+          <span class="impact-caption">Operator and maintenance experience after the retrofit</span>
+        </div>
+        <div class="project-impact-metric">
+          <span class="impact-label">Minimum daily disruption avoided</span>
+          <strong class="impact-number">~30 min/day</strong>
+          <span class="impact-caption">Reported lower-bound daily improvement</span>
+        </div>
+        <div class="project-impact-metric">
+          <span class="impact-label">Illustrative annual time recovered</span>
+          <strong class="impact-number">~240 hours</strong>
+          <span class="impact-caption">1 hour/day × an assumed 240 operating days</span>
+        </div>
+        <div class="project-impact-metric">
+          <span class="impact-label">Added recovery / prevention functions</span>
+          <strong class="impact-number">2</strong>
+          <span class="impact-caption">Timed fiber clean-out + powered reverse jam clearing</span>
+        </div>
+      </div>
+      <h3 class="project-impact-subheading">Before vs. after</h3>
+      <div class="project-impact-table-wrap">
+        <table class="project-impact-table">
+          <thead><tr><th scope="col">Operating issue</th><th scope="col">Before: manual relay sequencing</th><th scope="col">After: PLC retrofit</th></tr></thead>
+          <tbody>
+            <tr><td>End-of-shift shutdown</td><td>Sequence-sensitive manual stopping could leave fiber in the machine</td><td>Programmed empty-running clean-out before normal shutdown</td></tr>
+            <tr><td>Fiber jam recovery</td><td>Hands-on rollback of the saw-toothed opener cylinder created exposure and delay</td><td>Powered reverse-running of opener cylinder and feed rollers to help release trapped fiber</td></tr>
+            <tr><td>Unplanned stoppages</td><td>Recurring fiber jams and recovery work; reported at least ~30 minutes/day, typically ~1 hour/day</td><td>Experience-based estimate of ~1 hour/day in avoided downtime on a typical operating day</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="project-impact-footnote"><strong>Estimate basis:</strong> The daily figures reflect hands-on operational experience, not a formal machine-downtime log. At an illustrative 240 operating days per year, 30 minutes/day equals ~120 hours and the typical one-hour/day estimate equals ~240 hours of potential recovered operating time. Actual annual impact depends on operating days, production load and incident frequency. The retrofit reduced the need for manual intervention; this description does not assert safety certification or fully automatic jam detection.</p>
+    </div>
+  </div>
+</section>
 
 <section id="problem" class="section"><div class="container">
   <p class="eyebrow">01 · Operating problem</p>
@@ -67,7 +115,7 @@
       <div class="case-block"><strong>Manual startup</strong><span>The operator used five ON controls: main power followed by stages 1 through 4 in sequence.</span></div>
       <div class="case-block"><strong>Manual shutdown</strong><span>Stopping required the reverse sequence: stage 4 back through stage 1, then main power OFF.</span></div>
       <div class="case-block"><strong>Sequence sensitivity</strong><span>If a button was missed or the timing between steps was wrong, the machine could require a reset and complete restart.</span></div>
-      <div class="case-block"><strong>Material consequence</strong><span>If fiber was already inside the machine when the sequence failed, material could become stuck and create additional recovery work.</span></div>
+      <div class="case-block"><strong>Fiber jams and manual recovery</strong><span>Unexpected stops could leave fiber wrapped around the saw-toothed opener cylinder and feed rollers. Clearing it previously required hands-on cylinder rollback, introducing unnecessary exposure and approximately 30–60 minutes or more of recurring lost production time.</span></div>
     </div></article>
   </div>
 
@@ -82,7 +130,7 @@
     </figure>
   </div>
 
-  <div class="callout">The core problem was not simply “too many buttons.” The process sequence itself belonged in the controller rather than in the operator’s memory and timing.</div>
+  <div class="callout">The problem was larger than the number of buttons: incorrect or abrupt stopping left material inside the machine, and freeing jammed fiber could require manually backing up sharp-toothed rotating equipment after stopping it.</div>
 </div></section>
 
 <section id="design" class="section section-alt"><div class="container">
@@ -93,10 +141,12 @@
   <div class="case-list">
     <article class="case-card"><div class="case-grid">
       <div class="case-block"><strong>Simplified operation</strong><span>The main operating workflow became a power ON/OFF toggle plus Start and Stop pushbuttons.</span></div>
-      <div class="case-block"><strong>Programmed sequencing</strong><span>The PLC executes the required machine sequence and inter-stage delays automatically rather than relying on manual timing.</span></div>
+      <div class="case-block"><strong>Programmed sequencing</strong><span>The PLC executes the required startup order, inter-stage delays and controlled shutdown timing automatically rather than relying on manual operator timing.</span></div>
       <div class="case-block"><strong>Manual feeder controls retained</strong><span>One manual feed button for each feeder remained available because those functions were still useful to the operator.</span></div>
       <div class="case-block"><strong>Direction control retained</strong><span>The existing shared forward/reverse selector for the feeder system remained part of the operator controls.</span></div>
       <div class="case-block"><strong>Emergency stop added</strong><span>An emergency-stop control was added during the retrofit; the original machine did not have one.</span></div>
+      <div class="case-block"><strong>Timed end-of-shift clean-out</strong><span>During normal shutdown, the PLC keeps the machine running empty for a programmed interval to discharge remaining fiber before the sequence stops.</span></div>
+      <div class="case-block"><strong>Powered jam recovery</strong><span>Reverse-running of the saw-toothed opener cylinder and push/feed rollers provides a way to free trapped fiber without physically forcing the cylinder backward by hand. This is a controlled recovery function, not a claim of automatic jam detection.</span></div>
       <div class="case-block"><strong>Diagnosis simplified</strong><span>Centralizing the sequence in the PLC reduced the amount of distributed relay logic that had to be followed when diagnosing a control problem.</span></div>
     </div></article>
   </div>
@@ -173,17 +223,19 @@
       <div class="case-block"><strong>Fewer sequence errors</strong><span>Simplified Start/Stop operation reduced the opportunities for missed or delayed manual sequence steps.</span></div>
       <div class="case-block"><strong>Maintainability</strong><span>The control sequence became centralized and easier to follow than the previous distributed relay logic.</span></div>
       <div class="case-block"><strong>Existing hardware reused</strong><span>The two feeder VFDs remained in service, with the PLC providing the run commands needed by the updated control scheme.</span></div>
-      <div class="case-block"><strong>Safety improvement</strong><span>The retrofit added an emergency-stop operator control that had not been present on the original machine.</span></div>
+      <div class="case-block"><strong>Reduced manual exposure</strong><span>Powered reversing and a programmed clean-out sequence reduced the need to manually move the saw-toothed opener and feeder rollers when fiber became trapped.</span></div>
+      <div class="case-block"><strong>Downtime reduction</strong><span>Based on operating experience, the improved shutdown and recovery method avoided roughly one hour of recurring downtime on a typical working day, with approximately 30 minutes as a reported daily minimum.</span></div>
+      <div class="case-block"><strong>Emergency-stop control</strong><span>An emergency-stop operator control was added during the retrofit; no independent safety-system certification is claimed.</span></div>
     </div></article>
   </div>
 
   <div class="skill-cloud">
     <span>Siemens S7-1200</span><span>PLC Programming</span><span>Relay Logic Modernization</span><span>Machine Sequencing</span>
     <span>Star-Delta Motor Control</span><span>VFD Integration</span><span>Contactor Control</span><span>Digital I/O</span>
-    <span>Control Panel Retrofit</span><span>Troubleshooting</span><span>Operator Interface</span><span>Reliability Improvement</span>
+    <span>Control Panel Retrofit</span><span>Powered Jam Recovery</span><span>Timed Clean-Out</span><span>Operator Interface</span><span>Reliability Improvement</span>
   </div>
 
-  <div class="callout">The strongest part of this project is the system-level change: I moved a fragile operator-dependent sequence into deterministic control logic while keeping useful existing hardware and manual functions intact.</div>
+  <div class="callout">The strongest outcome was practical: PLC sequencing prevented fiber from being left in the machine during routine shutdown and provided powered reverse recovery for jams. This reduced recurring lost production time and the need for hazardous hands-on roller rollback while retaining useful existing machine hardware.</div>
 
   <div class="project-nav"><a href="../index.html#projects">← All projects</a><a href="komo-cnc.html">Next: KOMO CNC →</a></div>
 </div></section>
