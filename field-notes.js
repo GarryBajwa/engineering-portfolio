@@ -1,46 +1,32 @@
 (function () {
   const grid = document.getElementById("field-notes-grid");
-  const filters = document.getElementById("field-notes-filters");
-  const summary = document.getElementById("field-notes-summary");
-  const empty = document.getElementById("field-notes-empty");
   const lightbox = document.getElementById("field-notes-lightbox");
-  const lightboxImage = document.getElementById("field-lightbox-image");
-  const lightboxCaption = document.getElementById("field-lightbox-caption");
+  const imageEl = document.getElementById("field-lightbox-image");
   const closeBtn = lightbox?.querySelector(".field-lightbox-close");
   const prevBtn = lightbox?.querySelector(".field-lightbox-prev");
   const nextBtn = lightbox?.querySelector(".field-lightbox-next");
 
-  if (!grid || !Array.isArray(window.FIELD_NOTES)) return;
-  const entries = window.FIELD_NOTES.filter(item => item && typeof item.image === "string");
-  const categoryOrder = [
-    "Preventive Maintenance", "Repairs & Troubleshooting",
-    "Diagnostics & Inspections", "Small Improvements",
-    "Builds & Prototypes"
-  ];
-  const present = [...new Set(entries.map(item => item.category || "Other"))];
-  const categories = present.sort((a, b) => {
-    const ai = categoryOrder.indexOf(a), bi = categoryOrder.indexOf(b);
-    if (ai !== -1 || bi !== -1) return (ai === -1 ? 999 : ai) - (bi === -1 ? 999 : bi);
-    return a.localeCompare(b);
-  });
+  if (!grid) return;
 
-  let visible = entries;
-  let category = "All work";
+  // The portfolio is on GitHub Pages, so discover uploaded image filenames
+  // through the public repository API. No additional metadata or captions required.
+  const galleryFolder = "assets/maintenance-field-notes/";
+  const folderApiUrl = "https://api.github.com/repos/GarryBajwa/engineering-portfolio/contents/assets/maintenance-field-notes?ref=main";
+  const fallback = Array.isArray(window.FIELD_NOTES)
+    ? window.FIELD_NOTES.filter(item => item && typeof item.image === "string")
+    : [];
+
+  let photos = fallback;
   let currentIndex = 0;
   let lastTrigger = null;
 
   function openLightbox(index, trigger) {
-    if (!lightbox || !lightboxImage || !visible[index]) return;
+    if (!lightbox || !imageEl || !photos[index]) return;
     currentIndex = index;
     if (trigger) lastTrigger = trigger;
-    const item = visible[currentIndex];
-    lightboxImage.src = item.image;
-    lightboxImage.alt = item.alt || "";
-    if (lightboxCaption) {
-      const wording = [item.title, item.caption].filter(Boolean).join(" — ");
-      lightboxCaption.textContent = wording;
-      lightboxCaption.hidden = !wording;
-    }
+    const item = photos[index];
+    imageEl.src = item.image;
+    imageEl.alt = item.alt || "Maintenance and engineering photo";
     lightbox.classList.add("is-open");
     lightbox.setAttribute("aria-hidden", "false");
     document.body.classList.add("lightbox-open");
@@ -56,66 +42,58 @@
   }
 
   function move(step) {
-    if (!visible.length) return;
-    currentIndex = (currentIndex + step + visible.length) % visible.length;
+    if (!photos.length) return;
+    currentIndex = (currentIndex + step + photos.length) % photos.length;
     openLightbox(currentIndex, null);
   }
 
   function renderGallery() {
-    visible = category === "All work" ? entries : entries.filter(item => (item.category || "Other") === category);
     grid.replaceChildren();
-    visible.forEach((item, index) => {
+    photos.forEach((item, index) => {
       const button = document.createElement("button");
       button.type = "button";
       button.className = "field-photo";
-      button.setAttribute("aria-label", "Open field note: " + (item.title || item.caption || "Engineering photo"));
+      button.setAttribute("aria-label", "Open maintenance photo " + (index + 1));
 
       const img = document.createElement("img");
       img.src = item.image;
-      img.alt = item.alt || "";
+      img.alt = item.alt || "Hands-on maintenance and engineering work";
       img.loading = index < 6 ? "eager" : "lazy";
       img.decoding = "async";
+      img.addEventListener("error", () => button.remove());
       button.appendChild(img);
-
-      const copy = document.createElement("span");
-      copy.className = "field-photo-copy";
-      const kind = document.createElement("small");
-      kind.textContent = item.category || "Field Note";
-      const title = document.createElement("strong");
-      title.textContent = item.title || "Field Note";
-      const detail = document.createElement("span");
-      detail.textContent = item.caption || "";
-      copy.append(kind, title, detail);
-      button.appendChild(copy);
 
       button.addEventListener("click", () => openLightbox(index, button));
       grid.appendChild(button);
     });
-    if (summary) summary.textContent = visible.length + (visible.length === 1 ? " photo note" : " photo notes") + " · " + category;
-    if (empty) empty.hidden = visible.length !== 0;
   }
 
-  function renderFilters() {
-    if (!filters) return;
-    filters.replaceChildren();
-    // Only show populated categories; PM and improvement types appear as photos are added.
-    ["All work", ...categories].forEach(value => {
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = "field-notes-filter";
-      button.textContent = value;
-      button.setAttribute("aria-pressed", value === category ? "true" : "false");
-      button.addEventListener("click", () => {
-        category = value;
-        renderFilters();
-        renderGallery();
+  async function loadFolderPhotos() {
+    try {
+      const response = await fetch(folderApiUrl, {
+        headers: { Accept: "application/vnd.github+json" }
       });
-      filters.appendChild(button);
-    });
+      if (!response.ok) return;
+      const contents = await response.json();
+      if (!Array.isArray(contents)) return;
+      const found = contents
+        .filter(file => file.type === "file" && /\.(jpe?g|png|webp|gif|avif)$/i.test(file.name))
+        .sort((a, b) => a.name.localeCompare(b.name, undefined, { numeric: true }))
+        .map(file => ({
+          image: galleryFolder + encodeURIComponent(file.name),
+          alt: "Maintenance and engineering work photograph"
+        }));
+      if (!found.length) return;
+      photos = found;
+      renderGallery();
+    } catch (_) {
+      // Use the existing gallery photos when GitHub discovery is unavailable.
+    }
   }
 
-  renderFilters();
   renderGallery();
+  loadFolderPhotos();
+
   closeBtn?.addEventListener("click", closeLightbox);
   prevBtn?.addEventListener("click", () => move(-1));
   nextBtn?.addEventListener("click", () => move(1));
