@@ -1944,3 +1944,25 @@ p,li,figcaption,.project-card p,.case-block span,.detail-card p,
   .field-preview-note{grid-column:auto}
   .field-preview-card > img{height:210px}
 }
+
+/* Single-introduction maintenance photo gallery */
+.field-preview-grid.field-preview-simple{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+}
+.field-preview-simple .field-preview-card > img{
+  height:240px;
+}
+.field-preview-actions{
+  display:flex;
+  justify-content:flex-start;
+  margin-top:22px;
+}
+.field-notes-grid{margin-top:0}
+@media(max-width:700px){
+  .field-preview-grid.field-preview-simple{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .field-preview-simple .field-preview-card > img{height:165px}
+}
+@media(max-width:440px){
+  .field-preview-grid.field-preview-simple{grid-template-columns:1fr}
+  .field-preview-simple .field-preview-card > img{height:200px}
+}
