@@ -1,6 +1,6 @@
 (function () {
   const allProjects = Array.isArray(window.PORTFOLIO_PROJECTS) ? [...window.PORTFOLIO_PROJECTS] : [];
-  // Lead with maintenance and automation work. Keep the deeper project library accessible.
+  // Lead with maintenance and automation work while displaying every project on initial load.
   const featuredOrder = [
     "projects/fiber-filling-plc-retrofit.html",
     "projects/komo-cnc.html",
@@ -36,7 +36,6 @@
 
     projects.forEach((project, index) => {
       const card = make("article", "project-card" + (index < highlightCount ? " featured" : ""));
-      if (index >= highlightCount) card.classList.add("is-extra-project", "is-collapsed");
 
       const media = make("div", "project-media");
       const fallback = make("div", "project-image-fallback");
@@ -79,22 +78,7 @@
       grid.appendChild(card);
     });
 
-    const more = document.getElementById("project-more");
-    const moreToggle = document.getElementById("project-more-toggle");
-    if (more && moreToggle && projects.length > highlightCount) {
-      const allLabel = "Explore all " + projects.length + " engineering projects";
-      moreToggle.textContent = allLabel;
-      more.hidden = false;
-      let expanded = false;
-      moreToggle.addEventListener("click", () => {
-        expanded = !expanded;
-        grid.querySelectorAll(".is-extra-project").forEach(card => {
-          card.classList.toggle("is-collapsed", !expanded);
-        });
-        moreToggle.setAttribute("aria-expanded", String(expanded));
-        moreToggle.textContent = expanded ? "Show highlighted projects" : allLabel;
-      });
-    }
+
   }
 
   const capabilityLabels = {
