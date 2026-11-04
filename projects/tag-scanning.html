@@ -71,7 +71,7 @@
   <p>I independently developed and rolled out a MES-style manufacturing application, beginning with departmental barcode tracking and expanding to plant-wide production records, auto-updating KPIs, employee-work analysis, schedule progress and supervisor decisions. The new information made production and performance patterns visible where no reliable historical comparison previously existed. Around this core, I built or contributed to complementary engineering tools for TPO preparation, CAD/CAM validation and shop-floor execution. I also introduced the software to employees and supervisors, handled exceptions, and refined it from real production feedback.</p>
 </div></div></div>
 
-<section id="impact" class="project-impact-section" aria-labelledby="tag-impact-title">
+<section id="impact" class="project-impact-section" aria-labelledby="tag-impact-title" data-section-order="1">
   <div class="container">
     <div class="project-impact-card">
       <div class="project-impact-heading">
@@ -133,7 +133,7 @@
   </div>
 </section>
 
-<section class="section"><div class="container">
+<section class="section" data-section-order="2"><div class="container">
   <p class="eyebrow">Case 01 · The manufacturing challenge</p>
   <h2>Replacing scattered production updates with traceable events</h2>
   <p class="section-intro">Paper records and verbal handoffs made it difficult to understand where a product was, which work was complete, how long processing took and which department needed support.</p>
@@ -145,7 +145,7 @@
   </div></article></div>
 </div></section>
 
-<section class="section section-alt"><div class="container">
+<section class="section section-alt" data-section-order="3"><div class="container">
   <p class="eyebrow">Case 02 · Development and rollout</p>
   <h2>Built for one department, expanded across the plant</h2>
   <p class="section-intro">The implementation was iterative: solve the immediate scanning problem, make the interface usable in production, and then extend the same traceability principles into other departments and connected tools.</p>
@@ -158,7 +158,7 @@
   <div class="callout"><strong>Implementation ownership:</strong> I developed the software, deployed it to production workstations, trained employees and supervisors, collected feedback and continued refining the workflows. Production workflows were expanded and refined after rollout.</div>
 </div></section>
 
-<section class="section"><div class="container">
+<section class="section" data-section-order="4"><div class="container">
   <p class="eyebrow">Case 03 · Software architecture</p>
   <h2>Python services, browser clients and Excel-backed workflows</h2>
   <p class="section-intro">The system combined a centralized application server with department-specific scanning interfaces and reporting processes suited to the plant's existing tools and data formats.</p>
@@ -180,7 +180,7 @@
   </div>
 </div></section>
 
-<section class="section section-alt"><div class="container">
+<section class="section section-alt" data-section-order="5"><div class="container">
   <p class="eyebrow">Case 04 · Production traceability</p>
   <h2>From barcode events to actionable production status</h2>
   <p class="section-intro">Employees entered their ID at a station, scanned production tags and created time-based work records. Supervisors could then examine completion progress and resolve exceptions.</p>
@@ -200,7 +200,7 @@
   <div class="media-note">The application handled imperfect shop-floor data through operator and supervisor workflows. Specific role-authorization mechanisms are intentionally not claimed without code-level verification.</div>
 </div></section>
 
-<section class="section"><div class="container">
+<section class="section" data-section-order="6"><div class="container">
   <p class="eyebrow">Case 05 · Labour intelligence</p>
   <h2>Measuring product work—not just attendance</h2>
   <p class="section-intro">Start/end timestamps made it possible to analyze actual time associated with manufacturing products, distinguish recorded processing from gaps between tasks and support more realistic production planning.</p>
@@ -218,7 +218,7 @@
   <div class="callout">Recorded work times and automatically generated KPIs helped supervisors and managers assess production capability at plant, department and individual levels. In areas where consistent metrics had not existed, the new records created the baseline for future comparisons rather than a defensible before-and-after percentage. Task timestamps alone cannot measure quality or prove employee productivity without context for rework, setup, downtime and scanning compliance.</div>
 </div></section>
 
-<section id="ecosystem" class="section section-alt"><div class="container">
+<section id="ecosystem" class="section section-alt" data-section-order="7"><div class="container">
   <p class="eyebrow">Case 06 · Connected and related manufacturing tools</p>
   <h2>Linking design engineering, CNC execution and production traceability</h2>
   <p class="section-intro">The central Tag-Scanning server formed the production-information core. Separate desktop applications connected engineering preparation and CNC cutting workflows to production-ticket validation and material reuse decisions.</p>
@@ -251,7 +251,7 @@
   </div></article></div>
 </div></section>
 
-<section class="section"><div class="container">
+<section class="section" data-section-order="8"><div class="container">
   <p class="eyebrow">Case 07 · Data continuity and reporting</p>
   <h2>Practical storage, reconciliation and export workflows</h2>
   <p class="section-intro">Rather than requiring a new enterprise database, the production platform used structured Excel records and familiar output formats suited to existing operations and integrations.</p>
@@ -271,7 +271,7 @@
   <div class="media-note"><strong>Implementation boundary:</strong> This account does not claim transaction-level database locking, zero data loss, an SQL backend or a completed database migration. The exact file-access and concurrency strategy is not publicly documented.</div>
 </div></section>
 
-<section class="section section-alt"><div class="container">
+<section class="section section-alt" data-section-order="9"><div class="container">
   <p class="eyebrow">Case 08 · Results and engineering value</p>
   <h2>A software project with real operational adoption</h2>
   <p class="section-intro">The greatest result was not only labour time saved: the platform established continuously available, scan-derived evidence of what the plant, its departments and workstations could produce, supported by related engineering automation and a reusable history of operating decisions.</p>
@@ -292,6 +292,7 @@
 </div></section>
 </main>
 <footer class="site-footer"><div class="container footer-wrap"><span>Garry Bajwa · Engineering &amp; Automation Portfolio</span><a class="external-link" href="https://www.linkedin.com/in/gurwinderjit-singh" target="_blank" rel="noreferrer">LinkedIn</a></div></footer>
+<script src="../project-section-order.js?v=20261103a"></script>
 <script src="../project-lightbox.js?v=20261008k"></script>
 </body>
 </html>
