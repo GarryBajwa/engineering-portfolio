@@ -1742,18 +1742,6 @@ p,li,figcaption,.project-card p,.case-block span,.detail-card p,
 .leadership-field-notes strong{display:block;color:#214754;font-size:1.05rem}
 .leadership-field-notes p{color:#536f77;margin:7px 0 0;line-height:1.6;max-width:660px}
 .leadership-field-notes .button{flex-shrink:0}
-.project-card.is-extra-project.is-collapsed{display:none}
-.project-more{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:9px;
-  margin-top:26px;
-  padding:10px 0 0;
-}
-.project-more[hidden]{display:none}
-.project-more p{font-size:.84rem;text-align:center;color:#688196;margin:0}
-.project-more .button{cursor:pointer;font-family:inherit}
 .field-notes-filters{
   display:flex;flex-wrap:wrap;
   gap:9px;
