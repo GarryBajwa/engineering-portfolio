@@ -33,6 +33,7 @@
   if (nav && nav.closest("section[data-section-order]")) {
     const navWrap = document.createElement("div");
     navWrap.className = "container project-nav-footer";
+    navWrap.style.paddingBottom = "58px";
     navWrap.appendChild(nav);
     main.appendChild(navWrap);
   }
