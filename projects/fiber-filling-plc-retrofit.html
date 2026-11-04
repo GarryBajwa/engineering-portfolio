@@ -57,7 +57,7 @@
   <p>The original machine depended on a strict manual startup and shutdown sequence. Unexpected stops could leave fiber trapped around saw-toothed opener and feed rollers, leading to difficult, potentially hazardous manual rollback and lengthy stoppages. I replaced the relay-based sequence with Siemens S7-1200 PLC control, added a timed empty-running clean-out before normal shutdown, and enabled powered reverse-running of the opener cylinder and feed rollers to help clear jams. The redesign also retained useful manual feeder controls.</p>
 </div></div></div>
 
-<section id="impact" class="project-impact-section" aria-labelledby="fiber-impact-title">
+<section id="impact" class="project-impact-section" aria-labelledby="fiber-impact-title" data-section-order="1">
   <div class="container">
     <div class="project-impact-card">
       <div class="project-impact-heading">
@@ -105,7 +105,7 @@
   </div>
 </section>
 
-<section id="problem" class="section"><div class="container">
+<section id="problem" class="section" data-section-order="2"><div class="container">
   <p class="eyebrow">01 · Operating problem</p>
   <h2>The machine depended on the operator performing the sequence correctly every time</h2>
   <p class="section-intro">The original control system worked, but normal operation depended heavily on button order and timing.</p>
@@ -133,7 +133,7 @@
   <div class="callout">The problem was larger than the number of buttons: incorrect or abrupt stopping left material inside the machine, and freeing jammed fiber could require manually backing up sharp-toothed rotating equipment after stopping it.</div>
 </div></section>
 
-<section id="design" class="section section-alt"><div class="container">
+<section id="design" class="section section-alt" data-section-order="3"><div class="container">
   <p class="eyebrow">02 · PLC control redesign</p>
   <h2>Move the sequence from manual button timing into deterministic PLC logic</h2>
   <p class="section-intro">I simplified the operator interface while preserving the controls that still provided useful manual functionality.</p>
@@ -163,7 +163,7 @@
   </div>
 </div></section>
 
-<section id="panel" class="section"><div class="container">
+<section id="panel" class="section" data-section-order="4"><div class="container">
   <p class="eyebrow">03 · Panel architecture & I/O</p>
   <h2>Eight outputs covered the machine’s contactors, VFD commands and door solenoid</h2>
   <p class="section-intro">Before choosing the PLC hardware, I mapped the existing machine functions and counted the outputs required by the retrofit.</p>
@@ -212,7 +212,7 @@
   <div class="callout">This output count drove the hardware choice: an S7-1200 PLC plus one digital output expansion module provided the required control points without changing the existing VFD-driven feeder architecture.</div>
 </div></section>
 
-<section id="result" class="section section-alt"><div class="container">
+<section id="result" class="section section-alt" data-section-order="5"><div class="container">
   <p class="eyebrow">04 · Result</p>
   <h2>A machine that was easier to run, easier to recover and easier to troubleshoot</h2>
 
@@ -242,6 +242,7 @@
 </main>
 
 <footer class="site-footer"><div class="container footer-wrap"><span>Garry Bajwa · Engineering & Automation Portfolio</span><a class="external-link" href="https://www.linkedin.com/in/gurwinderjit-singh" target="_blank" rel="noreferrer">LinkedIn</a></div></footer>
+<script src="../project-section-order.js?v=20261103a"></script>
 <script src="../project-lightbox.js?v=20261009b"></script>
 </body>
 </html>
