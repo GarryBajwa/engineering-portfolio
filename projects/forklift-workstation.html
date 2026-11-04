@@ -35,7 +35,7 @@
 
 <div class="project-brief-wrap"><div class="container"><div class="project-brief"><span class="project-brief-label">Project overview</span><p>Three forklift workstations depended on portable UPS units to power a 24 V thermal label printer and a 20 V Windows tablet, creating repeated charging, runtime and cost problems. I redesigned the power approach around the forklift’s 32 V electrical system so both loads could operate reliably through the shift without rotating UPS units.</p></div></div></div>
 
-<section id="impact" class="project-impact-section" aria-labelledby="forklift-impact-title">
+<section id="impact" class="project-impact-section" aria-labelledby="forklift-impact-title" data-section-order="1">
   <div class="container">
     <div class="project-impact-card">
       <div class="project-impact-heading">
@@ -88,7 +88,7 @@
   </div>
 </section>
 
-<section id="problem" class="section"><div class="container">
+<section id="problem" class="section" data-section-order="2"><div class="container">
   <p class="eyebrow">01 · Operating problem</p><h2>A temporary backup device had become the permanent power strategy</h2>
   <div class="case-list">
     <article class="case-card"><div class="case-grid">
@@ -104,7 +104,7 @@
   </div>
 </div></section>
 
-<section id="design" class="section section-alt"><div class="container">
+<section id="design" class="section section-alt" data-section-order="3"><div class="container">
   <p class="eyebrow">02 · Power-system redesign</p><h2>Use the forklift as the energy source, then condition and protect the loads</h2>
   <div class="system-diagram">
     <div class="flow"><span class="node">32 V Forklift Battery</span><span class="arrow">→</span><span class="node">Key-Switched Supply</span><span class="arrow">→</span><span class="node">Manual Toggle</span><span class="arrow">→</span><span class="node">20 A DC-DC Conversion</span><span class="arrow">→</span><span class="node">Fused Loads</span></div>
@@ -120,7 +120,7 @@
   <div class="callout">Parts cost for the replacement power solution was approximately $110 per setup, compared with roughly $2,400 in UPS hardware required to keep one workstation continuously supported with one unit in service and one charging.</div>
 </div></section>
 
-<section id="validation" class="section"><div class="container">
+<section id="validation" class="section" data-section-order="4"><div class="container">
   <p class="eyebrow">03 · Commissioning & troubleshooting</p><h2>Field testing exposed the final adjustment</h2>
   <div class="case-list">
     <article class="case-card"><div class="case-grid">
@@ -136,7 +136,7 @@
   </div>
 </div></section>
 
-<section class="section section-alt"><div class="container">
+<section class="section section-alt" data-section-order="5"><div class="container">
   <p class="eyebrow">Engineering takeaway</p><h2>Replace a recurring workaround with a system-level solution</h2>
   <div class="skill-cloud"><span>DC Power Systems</span><span>DC-DC Conversion</span><span>Electrical Troubleshooting</span><span>Current Limiting</span><span>Fuse Protection</span><span>Mobile Computing</span><span>Thermal Printing</span><span>Reliability Improvement</span><span>Cost Reduction</span><span>Field Commissioning</span></div>
   <div class="callout">The value of the project was not only lower hardware cost. It removed a recurring charging/swapping workflow and turned the workstation into a continuously available part of the forklift.</div>
@@ -144,5 +144,6 @@
 </div></section>
 </main>
 <footer class="site-footer"><div class="container footer-wrap"><span>Garry Bajwa · Engineering & Automation Portfolio</span><a class="external-link" href="../field-notes.html">Engineering Field Notes</a></div></footer>
-  <script src="../project-lightbox.js?v=20261008k"></script>
+  <script src="../project-section-order.js?v=20261103a"></script>
+<script src="../project-lightbox.js?v=20261008k"></script>
 </body></html>
