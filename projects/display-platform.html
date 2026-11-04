@@ -57,7 +57,7 @@
 <div class="project-brief-wrap"><div class="container"><div class="project-brief"><span class="project-brief-label">Project overview</span><p>This software complemented the <a href="tag-scanning.html">Tag-Scanning Manufacturing System</a> by putting live production and KPI dashboards directly on screens around the plant. It also supplied safety guidelines and other visual notices through a self-service workflow: place an image, GIF or video in the designated display folder, include its desired display delay in the filename, and let the server discover, schedule and route it. The same centralized service supported indoor displays and a large LED matrix endpoint, with live monitoring and remote refresh.</p></div></div></div>
 
 
-<section id="impact" class="project-impact-section" aria-labelledby="display-impact-title">
+<section id="impact" class="project-impact-section" aria-labelledby="display-impact-title" data-section-order="1">
   <div class="container">
     <div class="project-impact-card">
       <div class="project-impact-heading">
@@ -106,7 +106,7 @@
   </div>
 </section>
 
-<section class="section"><div class="container">
+<section class="section" data-section-order="2"><div class="container">
   <p class="eyebrow">Case 01</p>
   <h2>From manual screen updates to one central workflow</h2>
   <p class="section-intro">The user workflow was deliberately simple: put the right file into the corresponding display folder with its duration encoded in the filename. The software determined the destination, playback interval, media handling and screen update without requiring the user to edit code or visit a Raspberry Pi.</p>
@@ -120,7 +120,7 @@
   </div>
 </div></section>
 
-<section id="integration" class="section section-alt"><div class="container">
+<section id="integration" class="section section-alt" data-section-order="3"><div class="container">
   <p class="eyebrow">Case 02 · Manufacturing integration</p>
   <h2>Live Tag-Scanning KPIs and safety communication on shared screens</h2>
   <p class="section-intro">This platform was part of a wider digital manufacturing workflow. Tag-Scanning generated up-to-date production information; the display platform created shared production awareness for employees and supervisors while enabling self-service safety guidance and general media across multiple managed endpoints.</p>
@@ -133,7 +133,7 @@
   <div class="callout">The less obvious operational benefit was shared situational awareness: manufacturing KPIs were available where employees and supervisors worked, while safety communication used the same managed screen network. No percentage improvement in safety, productivity or decision speed is claimed without measured data.</div>
 </div></section>
 
-<section class="section section-alt"><div class="container">
+<section class="section section-alt" data-section-order="4"><div class="container">
   <p class="eyebrow">Case 03 · Monitoring and control</p>
   <h2>Live status and remote display control</h2>
   <p class="section-intro">The browser-based Display Manager turned the system into an operational tool rather than just a slideshow server.</p>
@@ -161,7 +161,7 @@
   </div>
 </div></section>
 
-<section class="section"><div class="container">
+<section class="section" data-section-order="5"><div class="container">
   <p class="eyebrow">Case 04 · Reliability</p>
   <h2>Unattended display reliability</h2>
   <p class="section-intro">The endpoints were intended to run continuously, so the software included behavior for automatic media updates and recovery from common playback problems.</p>
@@ -189,7 +189,7 @@
   </div>
 </div></section>
 
-<section class="section section-alt"><div class="container">
+<section class="section section-alt" data-section-order="6"><div class="container">
   <p class="eyebrow">Engineering value</p>
   <h2>Custom software built around the operator</h2>
   <p class="section-intro">The system combined live manufacturing data delivery, staff-managed safety messaging, backend services, networked Raspberry Pi endpoints and centralized monitoring into a practical digital-signage layer for daily plant operations.</p>
@@ -200,7 +200,7 @@
   <div class="media-note"><strong>Scope note:</strong> Live production metrics from the Tag-Scanning System were displayed using this platform; they are deployed functionality, not future concepts. The large-format LED is documented here as a software endpoint, not as a claim of performing all of its physical installation and electrical work. Predictive bottleneck alerts, automated safety outcomes and 3D rendering are not claimed as deployed features. Quantified labour savings have not yet been measured.</div>
 </div></section>
 
-<section class="section"><div class="container">
+<section class="section" data-section-order="7"><div class="container">
   <div class="project-media-block">
     <p class="eyebrow">Project media</p>
     <h2>Software integration overview</h2>
@@ -217,6 +217,7 @@
 </main>
 
 <footer class="site-footer"><div class="container footer-wrap"><span>Garry Bajwa · Engineering & Automation Portfolio</span><a class="external-link" href="https://www.linkedin.com/in/gurwinderjit-singh" target="_blank" rel="noreferrer">LinkedIn</a></div></footer>
+<script src="../project-section-order.js?v=20261103a"></script>
 <script src="../project-lightbox.js?v=20261008k"></script>
 </body>
 </html>
